@@ -1,0 +1,38 @@
+{
+  "name": "gnib-visa-app",
+  "version": "0.0.1",
+  "description": "GNIB & Re-Entry Visa Appointment App",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Harshad93@bitbucket.org/Harshad93/gnib-visa-app.git"
+  },
+  "keywords": [
+    "gnib",
+    "visa",
+    "appointment"
+  ],
+  "author": "Harshad Ranganathan",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Harshad93/gnib-visa-app#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  }
+}
