@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Nav from './nav';
 
-export default class App extends Component {
-    render() {
-        return(
-            <div>
-                GNIB &amp; Re-Entry Visa Appointment App
-            </div>
-        );
-    }
+const App = () => {
+    return(
+        <div>
+            <h3>GNIB &amp; Re-Entry Visa Appointment</h3><br />
+            <Nav />
+        </div>
+    );
 }
+
+export default App;
