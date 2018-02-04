@@ -6,6 +6,11 @@ import { fetchAppointmentAvailDts } from '../actions/gnib';
 class GNIBAppointments extends Component {
     componentDidMount() {
         this.props.fetchAppointmentAvailDts();
+        this.interval = setInterval(this.props.fetchAppointmentAvailDts, 900000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     renderDts(slots) {
