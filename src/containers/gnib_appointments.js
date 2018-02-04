@@ -5,7 +5,51 @@ import { fetchAppointmentAvailDts } from '../actions/gnib';
 
 class GNIBAppointments extends Component {
     componentDidMount() {
-        this.props.fetchAppointmentAvailDts('Other', 'New');
+        this.props.fetchAppointmentAvailDts();
+    }
+
+    renderDts(slots) {
+        return _.map(slots, (slot) => {
+            return (
+                <div>
+                    <table className="table">
+                        <tbody>
+                            <tr>
+                                <td><span className="mb-1 text-success">{slot.time}</span></td>
+                                <td><button type="button" className="btn btn-primary btn-sm float-right">Book</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            );
+        });
+    }
+
+    renderTyp(types) {
+        return Object.keys(types).map(typ => {
+            const { slots } = types[typ]
+            if(slots) {
+                return (
+                    <div>
+                        <h6 className="mb-1 p-2">{typ}</h6>
+                        {this.renderDts(slots)}
+                    </div>
+                );
+            } else {
+                return (
+                    <div>
+                        <h6 className="mb-1 p-2">{typ}</h6>
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <td><p className="text-danger text-center">No Appointments Available</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                );
+            }
+        });
     }
 
     renderAppointments() { 
@@ -13,9 +57,14 @@ class GNIBAppointments extends Component {
         if(!gnib) {
            return <div>Loading...</div>;
         }
-        return _.map(gnib.slots, (slot) => {
+        return Object.keys(gnib).map(cat => {
             return (
-                <p key={slot.id}>{slot.time}</p>
+                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
+                    <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
+                        <h5 className="mb-1">{cat}</h5>
+                    </div><br />
+                    {this.renderTyp(gnib[cat])}
+                </a>
             );
         });
     }
@@ -23,7 +72,7 @@ class GNIBAppointments extends Component {
     render() {
         return (
             <div>
-                {this.renderAppointments()}
+                <div className="list-group">{this.renderAppointments()}</div><br />
             </div>
         );
     }
