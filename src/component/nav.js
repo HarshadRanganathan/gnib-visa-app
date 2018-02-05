@@ -1,11 +1,11 @@
 import React from 'react';
 import GNIBAppointments from '../containers/gnib_appointments';
-import LastUpdate from '../containers/last_update';
+import ToolBar from '../containers/tool_bar';
 
 const Nav = () => {
     return (
         <div>
-            <LastUpdate />
+            <ToolBar />
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item">
                     <a className="nav-link active" id="gnib-tab" data-toggle="tab" href="#gnib" role="tab" aria-controls="gnib" aria-selected="true">GNIB (IRP)</a>

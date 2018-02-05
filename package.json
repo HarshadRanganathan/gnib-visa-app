@@ -7,9 +7,11 @@
     "test": "test"
   },
   "scripts": {
+    "webpack-watch": "webpack -d --watch",
+    "express-server": "nodemon server.js",
+    "dev": "npm-run-all --parallel webpack-watch express-server",
     "build": "webpack --progress --colors",
-    "dev": "webpack-dev-server",
-    "start": "npm run build && node server.js"
+    "start": "npm run build && npm run express-server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "keywords": [
     "gnib",
+    "irp",
     "visa",
     "appointment"
   ],
@@ -28,6 +31,8 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "nodemon": "^1.14.12",
+    "npm-run-all": "^4.1.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
