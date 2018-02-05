@@ -2,7 +2,7 @@ import axios from 'axios';
 const shortid = require('shortid');
 
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
-const ROOT_URL = `https://burghquayregistrationoffice.inis.gov.ie/${ST_PATH}`;
+const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
 export const CATEGORIES = [
     {_id: shortid.generate(), category: 'Work'}, 
