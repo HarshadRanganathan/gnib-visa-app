@@ -8,10 +8,11 @@
   },
   "scripts": {
     "webpack-watch": "webpack -d --watch",
-    "express-server": "nodemon server.js",
-    "dev": "npm-run-all --parallel webpack-watch express-server",
+    "express-server:dev": "nodemon server.js",
+    "express-server:prod": "node server.js",
+    "dev": "npm-run-all --parallel webpack-watch express-server:dev",
     "build": "webpack --progress --colors",
-    "start": "npm run build && npm run express-server"
+    "start": "npm run build && npm run express-server:prod"
   },
   "repository": {
     "type": "git",
