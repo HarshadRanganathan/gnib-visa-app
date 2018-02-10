@@ -24,7 +24,7 @@ class GNIBAppointments extends Component {
         });
     }
 
-    renderTyp(types) {
+    renderTypes(types) {
         return Object.keys(types).map(type => {
             const { slots, empty } = types[type]
             if(slots) {
@@ -68,7 +68,7 @@ class GNIBAppointments extends Component {
                     <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
                         <h5 className="mb-1">{cat}</h5>
                     </div><br />
-                    {this.renderTyp(gnib[cat])}
+                    {this.renderTypes(gnib[cat])}
                 </a>
             );
         });
