@@ -52,19 +52,20 @@ class VISAAppointments extends Component {
 
     renderAppointments() { 
         const { visa } = this.props; 
-        if(!visa) {
-           return <div>Loading...</div>;
+        if(_.isEmpty(visa)) {
+            return <div>Loading...</div>;
+        } else {
+            return Object.keys(visa).map(type => {
+                return (
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
+                        <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
+                            <h5 className="mb-1">{type}</h5>
+                        </div><br />
+                        {this.renderType(visa[type])}
+                    </a>
+                );
+            });
         }
-        return Object.keys(visa).map(type => {
-            return (
-                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
-                    <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
-                        <h5 className="mb-1">{type}</h5>
-                    </div><br />
-                    {this.renderType(visa[type])}
-                </a>
-            );
-        });
     }
 
     render() {

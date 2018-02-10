@@ -58,20 +58,21 @@ class GNIBAppointments extends Component {
     }
 
     renderAppointments() { 
-        const { gnib } = this.props; 
-        if(!gnib) {
-           return <div>Loading...</div>;
+        const { gnib } = this.props;
+        if(_.isEmpty(gnib)) {
+            return (<div>Loading...</div>);
+        } else {
+            return Object.keys(gnib).map(cat => {
+                return (
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={gnib[cat]._id}>
+                        <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
+                            <h5 className="mb-1">{cat}</h5>
+                        </div><br />
+                        {this.renderTypes(gnib[cat])}
+                    </a>
+                );
+            });
         }
-        return Object.keys(gnib).map(cat => {
-            return (
-                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={gnib[cat]._id}>
-                    <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
-                        <h5 className="mb-1">{cat}</h5>
-                    </div><br />
-                    {this.renderTypes(gnib[cat])}
-                </a>
-            );
-        });
     }
 
     render() {
