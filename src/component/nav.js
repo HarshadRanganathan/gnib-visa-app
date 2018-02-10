@@ -1,5 +1,6 @@
 import React from 'react';
 import GNIBAppointments from '../containers/gnib_appointments';
+import VISAAppointments from '../containers/visa_appointments';
 import ToolBar from '../containers/tool_bar';
 
 const Nav = () => {
@@ -18,7 +19,9 @@ const Nav = () => {
                 <div className="tab-pane fade show active" id="gnib" role="tabpanel" aria-labelledby="gnib-tab">
                     <GNIBAppointments />
                 </div>
-                <div className="tab-pane fade" id="visa" role="tabpanel" aria-labelledby="visa-tab">...</div>
+                <div className="tab-pane fade" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                    <VISAAppointments />
+                </div>
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import axios from 'axios';
 const shortid = require('shortid');
 
@@ -14,14 +15,14 @@ export const TYPES = [
     {_id: shortid.generate(), type:  'Renewal'}
 ];
 
-function appointmentDates(response) {
+function appointmentDates(responses) {
     return {
         type: GNIB_APPOINTMENT_DATES,
-        payload: response
+        payload: responses
     };
 }
 
-function requests() {
+function requestAppts() {
     return _.flatMap(CATEGORIES, ({category}) => {
         return _.map(TYPES, ({type}) => {
             const URL = `${ROOT_URL}/(getAppsNear)?openpage&cat=${category}&sbcat=All&typ=${type}`;
@@ -32,17 +33,17 @@ function requests() {
 
 export function fetchAppointmentAvailDts(responseCallback) {    
     return (dispatch) => {
-        axios.all(requests())
-            .then((responses) => {
-                if(responseCallback) responseCallback();
-                return responses;
-            })
-            .then((responses) => {
-                dispatch(appointmentDates(responses));
-            })
-            .catch((error) => {
-                /* TODO: UI handling */
-                console.log(error);
-            });
+        axios.all(requestAppts())
+        .then((responses) => {
+            if(responseCallback) responseCallback();
+            return responses;
+        })
+        .then((responses) => {
+            dispatch(appointmentDates(responses));
+        })
+        .catch((error) => {
+            /* TODO: UI handling */
+            console.log(error);
+        });
     };
 }

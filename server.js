@@ -12,6 +12,13 @@ app.use('/gnib-proxy', proxy({
     target: 'https://burghquayregistrationoffice.inis.gov.ie',
     secure: false
 }));
+app.use('/visa-proxy', proxy({
+    pathRewrite: {
+        '^/visa-proxy/': '/'
+    },
+    target: 'https://reentryvisa.inis.gov.ie',
+    secure: false
+}));
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
