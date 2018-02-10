@@ -12,7 +12,7 @@ export const TYPES = [
     {_id: shortid.generate(), type: 'Family', val: 'F'}
 ];
 
-function appointmentDates(responses) {
+function appts(responses) {
     return {
         type: VISA_APPOINTMENT_DATES,
         payload: responses
@@ -40,13 +40,17 @@ function requestAppts(payload) {
     });
 }
 
-export function fetchAppointmentAvailDts() {
+export function fetchVisaAppointmentAvailDts(responseCallback) {
     return (dispatch) => {
         axios.all(requestDts())
         .then((responses) => {
             axios.all(requestAppts(responses))
             .then((responses) => {
-                dispatch(appointmentDates(responses));        
+                if(responseCallback) responseCallback();
+                return responses;
+            })
+            .then((responses) => {
+                dispatch(appts(responses));        
             })
             .catch((error) => {
                 console.log(error);                

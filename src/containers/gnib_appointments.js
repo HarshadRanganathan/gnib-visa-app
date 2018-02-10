@@ -1,12 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAppointmentAvailDts } from '../actions/gnib';
+import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
 
 class GNIBAppointments extends Component {
     componentDidMount() {
-        this.props.fetchAppointmentAvailDts();
-        this.interval = setInterval(this.props.fetchAppointmentAvailDts, 900000);
+        this.props.fetchGnibAppointmentAvailDts();
+        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 900000);
     }
 
     componentWillUnmount() {
@@ -87,4 +87,4 @@ function mapStateToProps({ gnib }) {
     return { gnib };
 }
 
-export default connect(mapStateToProps, { fetchAppointmentAvailDts })(GNIBAppointments);
+export default connect(mapStateToProps, { fetchGnibAppointmentAvailDts })(GNIBAppointments);

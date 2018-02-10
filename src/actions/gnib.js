@@ -15,7 +15,7 @@ export const TYPES = [
     {_id: shortid.generate(), type:  'Renewal'}
 ];
 
-function appointmentDates(responses) {
+function appts(responses) {
     return {
         type: GNIB_APPOINTMENT_DATES,
         payload: responses
@@ -31,7 +31,7 @@ function requestAppts() {
     });
 }
 
-export function fetchAppointmentAvailDts(responseCallback) {    
+export function fetchGnibAppointmentAvailDts(responseCallback) {    
     return (dispatch) => {
         axios.all(requestAppts())
         .then((responses) => {
@@ -39,7 +39,7 @@ export function fetchAppointmentAvailDts(responseCallback) {
             return responses;
         })
         .then((responses) => {
-            dispatch(appointmentDates(responses));
+            dispatch(appts(responses));
         })
         .catch((error) => {
             /* TODO: UI handling */

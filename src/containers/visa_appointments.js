@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { fetchAppointmentAvailDts } from '../actions/visa';
+import { fetchVisaAppointmentAvailDts } from '../actions/visa';
 
 class VISAAppointments extends Component {
     componentDidMount() {
-       this.props.fetchAppointmentAvailDts();
-       this.interval = setInterval(this.props.fetchAppointmentAvailDts, 900000);
+       this.props.fetchVisaAppointmentAvailDts();
+       this.interval = setInterval(this.props.fetchVisaAppointmentAvailDts, 900000);
     }
 
     componentWillUnmount() {
@@ -80,4 +80,4 @@ function mapStateToProps({ visa }) {
     return { visa };
 }
 
-export default connect(mapStateToProps, { fetchAppointmentAvailDts })(VISAAppointments);
+export default connect(mapStateToProps, { fetchVisaAppointmentAvailDts })(VISAAppointments);
