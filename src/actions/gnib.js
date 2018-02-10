@@ -30,14 +30,19 @@ function requests() {
     });
 }
 
-export function fetchAppointmentAvailDts() {    
+export function fetchAppointmentAvailDts(responseCallback) {    
     return (dispatch) => {
         axios.all(requests())
+            .then((responses) => {
+                if(responseCallback) responseCallback();
+                return responses;
+            })
             .then((responses) => {
                 dispatch(appointmentDates(responses));
             })
             .catch((error) => {
-                console.log(error.message);
+                /* TODO: UI handling */
+                console.log(error);
             });
     };
 }
