@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import axios from 'axios';
+import { emitRequestsProgress } from './progress';
 const url = require('url');
 const querystring = require('querystring');
 const shortid = require('shortid');
@@ -42,6 +43,7 @@ function requestAppts(payload) {
 
 export function fetchVisaAppointmentAvailDts(responseCallback) {
     return (dispatch) => {
+        emitRequestsProgress(dispatch);
         axios.all(requestDts())
         .then((responses) => {
             axios.all(requestAppts(responses))

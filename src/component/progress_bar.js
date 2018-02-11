@@ -3,8 +3,8 @@ const ProgressBar = require('progressbar.js');
 
 class CircleProgressBar extends Component {
     componentDidMount() {
-        var circle = new ProgressBar.Circle(this.refs.progress, {
-            strokeWidth: 2,
+        this.circle = new ProgressBar.Circle(this.refs.progress, {
+            strokeWidth: 4,
             trailWidth: 1,
             easing: 'easeInOut',
             svgStyle: {
@@ -12,7 +12,11 @@ class CircleProgressBar extends Component {
                 width: '12%'
             }
         });
-        circle.animate(1.0);
+    }
+
+    componentWillReceiveProps(newProps) {       
+        this.circle.setText(newProps.text);
+        this.circle.animate(newProps.progress);
     }
 
     render() {

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
-import CircleProgressBar from '../component/progressbar';
+import CircleProgressBar from '../component/progress_bar';
 
 class GNIBAppointments extends Component {
     componentDidMount() {
@@ -74,7 +74,7 @@ class GNIBAppointments extends Component {
     render() {
         const { gnib } = this.props;
         if(_.isEmpty(gnib)) {
-            return <CircleProgressBar />;
+            return <CircleProgressBar text={this.props.progress.percent} progress={this.props.progress.percent/100}/>;
         } else {
             return (
                 <div>
@@ -85,8 +85,8 @@ class GNIBAppointments extends Component {
     }
 }
 
-function mapStateToProps({ gnib }) {
-    return { gnib };
+function mapStateToProps({ progress, gnib }) {
+    return { progress, gnib };
 }
 
 export default connect(mapStateToProps, { fetchGnibAppointmentAvailDts })(GNIBAppointments);

@@ -5,8 +5,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import App from './component/app';
 import reducers from './reducers';
+import { progressTracker } from './actions/progress';
 
 const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
+progressTracker();
 
 ReactDOM.render(
     <Provider store={

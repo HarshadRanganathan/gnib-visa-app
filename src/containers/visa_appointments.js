@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchVisaAppointmentAvailDts } from '../actions/visa';
-import CircleProgressBar from '../component/progressbar';
+import CircleProgressBar from '../component/progress_bar';
 
 class VISAAppointments extends Component {
     componentDidMount() {
@@ -67,7 +67,7 @@ class VISAAppointments extends Component {
     render() {
         const { visa } = this.props; 
         if(_.isEmpty(visa)) {
-            return <CircleProgressBar />;
+            return <CircleProgressBar text={this.props.progress.percent} progress={this.props.progress.percent/100}/>;
         } else {
             return (
                 <div>
@@ -78,8 +78,8 @@ class VISAAppointments extends Component {
     }
 }
 
-function mapStateToProps({ visa }) {
-    return { visa };
+function mapStateToProps({ progress, visa }) {
+    return { progress, visa };
 }
 
 export default connect(mapStateToProps, { fetchVisaAppointmentAvailDts })(VISAAppointments);

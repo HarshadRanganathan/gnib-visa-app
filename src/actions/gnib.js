@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import axios from 'axios';
+import { emitRequestsProgress } from './progress';
 const shortid = require('shortid');
 
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
@@ -33,6 +34,7 @@ function requestAppts() {
 
 export function fetchGnibAppointmentAvailDts(responseCallback) {    
     return (dispatch) => {
+        emitRequestsProgress(dispatch);
         axios.all(requestAppts())
         .then((responses) => {
             if(responseCallback) responseCallback();
