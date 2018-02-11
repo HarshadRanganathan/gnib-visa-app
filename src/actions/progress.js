@@ -5,7 +5,7 @@ var requestsCounter = 0;
 var percentCompleted = 0;
 
 export function emitRequestsProgress(dispatch) {
-    let progressIntervalId = setInterval(() => {
+    const progressIntervalId = setInterval(() => {
         if(percentCompleted == 100) {
             clearInterval(progressIntervalId);
         } else {

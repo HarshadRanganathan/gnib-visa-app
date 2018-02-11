@@ -16,7 +16,7 @@ class CircleProgressBar extends Component {
 
     componentWillReceiveProps(newProps) {       
         this.circle.setText(newProps.text);
-        this.circle.animate(newProps.progress);
+        this.circle.set(newProps.progress);
     }
 
     render() {
