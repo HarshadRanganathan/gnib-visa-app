@@ -43,6 +43,7 @@
     "http-proxy-middleware": "^0.17.4",
     "lodash": "^4.17.5",
     "path": "^0.12.7",
+    "progressbar.js": "^1.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

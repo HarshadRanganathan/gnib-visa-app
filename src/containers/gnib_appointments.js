@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
+import CircleProgressBar from '../component/progressbar';
 
 class GNIBAppointments extends Component {
     componentDidMount() {
@@ -18,7 +19,7 @@ class GNIBAppointments extends Component {
             return (
                 <tr key={slot.id}>
                     <td><span className="mb-1 text-success">{slot.time}</span></td>
-                    <td><button type="button" className="btn btn-primary btn-sm float-right">Book</button></td>
+                    <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
                 </tr>
             );
         });
@@ -57,30 +58,30 @@ class GNIBAppointments extends Component {
         });
     }
 
-    renderAppointments() { 
-        const { gnib } = this.props;
-        if(_.isEmpty(gnib)) {
-            return (<div>Loading...</div>);
-        } else {
-            return Object.keys(gnib).map(cat => {
-                return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={gnib[cat]._id}>
-                        <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
-                            <h5 className="mb-1">{cat}</h5>
-                        </div><br />
-                        {this.renderTypes(gnib[cat])}
-                    </a>
-                );
-            });
-        }
+    renderAppointments(gnib) { 
+        return Object.keys(gnib).map(cat => {
+            return (
+                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={gnib[cat]._id}>
+                    <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
+                        <h5 className="mb-1">{cat}</h5>
+                    </div><br />
+                    {this.renderTypes(gnib[cat])}
+                </a>
+            );
+        });
     }
 
     render() {
-        return (
-            <div>
-                <div className="list-group">{this.renderAppointments()}</div><br />
-            </div>
-        );
+        const { gnib } = this.props;
+        if(_.isEmpty(gnib)) {
+            return <CircleProgressBar />;
+        } else {
+            return (
+                <div>
+                    <div className="list-group">{this.renderAppointments(gnib)}</div><br />
+                </div>
+            );
+        }
     }
 }
 

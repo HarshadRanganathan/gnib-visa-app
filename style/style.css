@@ -22,3 +22,7 @@
     -o-animation: rotating 2s linear infinite;
     animation: rotating 2s linear infinite;
 }
+
+.vh-75 {
+  min-height: 75vh;
+}

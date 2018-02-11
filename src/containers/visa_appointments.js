@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchVisaAppointmentAvailDts } from '../actions/visa';
+import CircleProgressBar from '../component/progressbar';
 
 class VISAAppointments extends Component {
     componentDidMount() {
@@ -17,7 +18,7 @@ class VISAAppointments extends Component {
             return (
                 <tr key={slot.id}>
                     <td><span className="mb-1 text-success">{slot.time}</span></td>
-                    <td><button type="button" className="btn btn-primary btn-sm float-right">Book</button></td>
+                    <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
                 </tr>
             );
         });
@@ -50,30 +51,30 @@ class VISAAppointments extends Component {
         }
     }
 
-    renderAppointments() { 
-        const { visa } = this.props; 
-        if(_.isEmpty(visa)) {
-            return <div>Loading...</div>;
-        } else {
-            return Object.keys(visa).map(type => {
-                return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
-                        <div className="d-flex w-100 justify-content-between bg-secondary text-white p-2">
-                            <h5 className="mb-1">{type}</h5>
-                        </div><br />
-                        {this.renderType(visa[type])}
-                    </a>
-                );
-            });
-        }
+    renderAppointments(visa) { 
+        return Object.keys(visa).map(type => {
+            return (
+                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
+                    <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
+                        <h5 className="mb-1">{type}</h5>
+                    </div><br />
+                    {this.renderType(visa[type])}
+                </a>
+            );
+        });
     }
 
     render() {
-        return (
-            <div>
-                <div className="list-group">{this.renderAppointments()}</div><br />
-            </div>
-        );
+        const { visa } = this.props; 
+        if(_.isEmpty(visa)) {
+            return <CircleProgressBar />;
+        } else {
+            return (
+                <div>
+                    <div className="list-group">{this.renderAppointments(visa)}</div><br />
+                </div>
+            );
+        }
     }
 }
 
