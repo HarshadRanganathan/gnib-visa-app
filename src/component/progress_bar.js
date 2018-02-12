@@ -14,6 +14,10 @@ class CircleProgressBar extends Component {
         });
     }
 
+    componentWillUnmount() {
+        this.circle.destroy();
+    }
+
     componentWillReceiveProps(newProps) {       
         this.circle.setText(newProps.text);
         this.circle.set(newProps.progress);
