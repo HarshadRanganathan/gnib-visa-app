@@ -2,23 +2,18 @@ import axios from 'axios';
 
 export const REQUESTS_PROGRESS = 'REQUESTS_PROGRESS';
 var requestsCounter = 0;
-var percentCompleted = 0;
 
 export function emitRequestsProgress(dispatch) {
-    const progressIntervalId = setInterval(() => {
-        if(percentCompleted == 100) {
-            clearInterval(progressIntervalId);
-        } else {
-            return dispatch({
-                type: REQUESTS_PROGRESS,
-                payload: percentCompleted
-            });
-        }
-    }, 5);
-}
-
-function progress({loaded, total}) {   
-    percentCompleted = Math.floor((loaded * 100) / (total * requestsCounter)); 
+    let percentCompleted = 0;
+    const progress = ({loaded, total}) => {
+        percentCompleted = Math.floor((loaded * 100) / (total * requestsCounter));                
+        dispatch({
+            type: REQUESTS_PROGRESS,
+            payload: percentCompleted
+        });
+    }
+    axios.defaults.onDownloadProgress = progress;
+    axios.defaults.onUploadProgress = progress;
 }
 
 export function progressTracker() { 
@@ -33,6 +28,4 @@ export function progressTracker() {
         --requestsCounter;
         return Promise.reject(error);
     });
-    axios.defaults.onDownloadProgress = progress;
-    axios.defaults.onUploadProgress = progress;
 }
