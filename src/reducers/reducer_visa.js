@@ -1,15 +1,24 @@
 import _ from 'lodash';
-import { VISA_APPOINTMENT_DATES, TYPES } from '../actions/visa';
+import { VISA_APPOINTMENT_DATES, TYPES, INDIVIDUAL, FAMILY } from '../actions/visa';
 const url = require('url');
 const querystring = require('querystring');
 
-function payloadTransformer(payload) {
-    let response = {};
+function payloadTransformer(response, payload) {
     _.map(payload, (payload) => {
         const { request, data } = payload;
-        const { type: val } = querystring.parse(url.parse(request.responseURL).query);        
-        const { _id: typeId, type} = _.find(TYPES, ['val', val]);
-        response = _.merge(response, { [type]: _.merge({_id: typeId}, data)});
+        const { dt, type: code, num } = querystring.parse(url.parse(request.responseURL).query);        
+        const { type } = _.find(TYPES, ['code', code]);
+        if(type == INDIVIDUAL) {
+            response[INDIVIDUAL].appts.push(_.merge({ date: dt }, data));
+        } else if(type == FAMILY) {
+            if(_.find(response[FAMILY].appts, { date: dt })) {
+                const index = _.findIndex(response[FAMILY].appts, { date: dt });
+                response[FAMILY].appts[index].familyMembers.push(_.merge({ num }, data));
+            } else {
+                const familyMembers = { familyMembers: [_.merge({ num }, data)] };
+                response[FAMILY].appts.push(_.merge({ date: dt }, familyMembers));
+            }
+        }
     });
     return response;
 }
@@ -17,7 +26,12 @@ function payloadTransformer(payload) {
 export default function(state={}, action) {
     switch(action.type) {
         case VISA_APPOINTMENT_DATES:
-            return payloadTransformer(action.payload);
+            let response = {};
+            _.map(TYPES, ({ _id, type }) => {
+                const typeObj = { [type]: { _id, appts: [] } };
+                response = _.merge(response, typeObj)
+            });
+            return payloadTransformer(response, action.payload);
         default:
             return state;
     }
