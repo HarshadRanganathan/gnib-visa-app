@@ -26,3 +26,7 @@
 .vh-75 {
   min-height: 75vh;
 }
+
+.display-linebreak {
+  white-space: pre-line;
+}

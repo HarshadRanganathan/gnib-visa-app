@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchVisaAppointmentAvailDts, INDIVIDUAL, FAMILY } from '../actions/visa';
 import CircleProgressBar from '../component/progress_bar';
+import Slots from '../component/slots';
 
 class VISAAppointments extends Component {
     componentDidMount() {
@@ -13,66 +14,70 @@ class VISAAppointments extends Component {
         clearInterval(this.interval);
     }
 
-    renderDts(slots) {
-        return _.map(slots, (slot) => {
-            return (
-                <tr key={slot.id}>
-                    <td><span className="mb-1 text-success">{slot.time}</span></td>
-                    <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
-                </tr>
-            );
-        });
-    }
-
     renderTypeIndividual({ appts }) {
         if(_.some(appts, 'slots')) {
             return _.map(appts, ({ date, slots, empty }) => {
                 if(slots) {
                     return (
-                        <tbody>
-                            {this.renderDts(slots)}
-                        </tbody>
+                        <Slots data={slots} />
                     );
                 }
             });
         } else {
             return (
-                <tbody>
-                    <tr>
-                        <td><p className="text-danger text-center">No Appointments Available</p></td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <td><p className="text-danger text-center">No Appointments Available</p></td>
+                </tr>
             );
         }
     }
 
-    renderTypeFamily(members) {
-        return Object.keys(members).map(count => {
-            const { slots, empty } = members[count];
+    renderMembersAppts(familyMembers) {
+        return _.map(familyMembers, ({ num, slots, empty }) => {
             if(slots) {
                 return (
+                    <tr>
+                        <td>{num}</td>
+                        <td className="display-linebreak">
+                            <span className="mb-1 text-success">{_.map(slots, 'time').join("\n")}</span>
+                        </td>
+                        <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
+                    </tr>
+                );
+            }
+        });
+    }
+
+    renderTypeFamily({ appts }) {
+        return _.map(appts, ({ date, familyMembers }) => {
+            if(!_.some(familyMembers, 'slots')) {
+              return (
+                <table className="table">
+                    <tbody>
+                        <tr>
+                            <td><p className="text-danger text-center">No Appointments Available</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+              );  
+            } else {
+                return (
                     <div>
-                        <h6 className="mb-1 p-2">{count}</h6>
+                        <h6 className="mb-1 p-2">{date}</h6>
                         <div>
                             <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"># of Applicants</th>
+                                        <th scope="col">Slot</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    {this.renderDts(slots)}
+                                    {this.renderMembersAppts(familyMembers)}
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                );
-            } if(empty) {
-                return (
-                    <div>
-                        <h6 className="mb-1 p-2">{count}</h6>
-                        <table className="table">
-                            <tbody>
-                                <tr>
-                                    <td><p className="text-danger text-center">No Appointments Available</p></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 );
             }
@@ -89,7 +94,9 @@ class VISAAppointments extends Component {
                         </div><br />
                         <div>
                             <table className="table">
-                                {this.renderTypeIndividual(visa[type])}
+                                <tbody>
+                                    {this.renderTypeIndividual(visa[type])}
+                                </tbody>
                             </table>
                         </div>
                     </a>
