@@ -19,7 +19,7 @@ class VISAAppointments extends Component {
             return _.map(appts, ({ date, slots, empty }) => {
                 if(slots) {
                     return (
-                        <Slots data={slots} />
+                        <Slots key={date} data={slots} />
                     );
                 }
             });
@@ -36,7 +36,7 @@ class VISAAppointments extends Component {
         return _.map(familyMembers, ({ num, slots, empty }) => {
             if(slots) {
                 return (
-                    <tr>
+                    <tr key={num}>
                         <td>{num}</td>
                         <td className="display-linebreak">
                             <span className="mb-1 text-success">{_.map(slots, 'time').join("\n")}</span>
@@ -52,7 +52,7 @@ class VISAAppointments extends Component {
         return _.map(appts, ({ date, familyMembers }) => {
             if(!_.some(familyMembers, 'slots')) {
               return (
-                <table className="table">
+                <table key={date} className="table">
                     <tbody>
                         <tr>
                             <td><p className="text-danger text-center">No Appointments Available</p></td>
@@ -62,7 +62,7 @@ class VISAAppointments extends Component {
               );  
             } else {
                 return (
-                    <div>
+                    <div key={date}>
                         <h6 className="mb-1 p-2">{date}</h6>
                         <div>
                             <table className="table">
