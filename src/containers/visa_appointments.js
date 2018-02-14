@@ -90,7 +90,7 @@ class VISAAppointments extends Component {
         return Object.keys(visa).map(type => {
             if(type == INDIVIDUAL) {
                 return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]}>
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={type}>
                         <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                             <h5 className="mb-1">{type}</h5>
                         </div><br />
@@ -105,7 +105,7 @@ class VISAAppointments extends Component {
                 );
             } else if(type == FAMILY) {
                 return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]}>
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={type}>
                         <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                             <h5 className="mb-1">{type}</h5>
                         </div><br />
@@ -128,7 +128,7 @@ class VISAAppointments extends Component {
                     <div className="list-group">
                         {this.renderAppointments(visa)}
                     </div><br />
-                    <div class="alert alert-info" role="alert">
+                    <div className="alert alert-info" role="alert">
                         Emergency appointment slots to be directly checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
                     </div>
                 </React.Fragment>

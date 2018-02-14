@@ -8,14 +8,7 @@ function payloadTransformer(payload) {
     _.map(payload, (payload) => {
         const { request, data } = payload;
         const { cat, typ } = querystring.parse(url.parse(request.responseURL).query);
-        const catId = _.find(CATEGORIES, ['category', cat])._id;
-        const typId = _.find(TYPES, ['type', typ])._id;
-        response = _.merge(response, { [cat]: 
-            { 
-                _id: catId,
-                [typ]: _.merge({_id: typId}, data) 
-            } 
-        });
+        response = _.merge(response, { [cat]: { [typ]: data} });
     });
     return response;
 }

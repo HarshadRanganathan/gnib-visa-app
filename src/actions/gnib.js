@@ -1,19 +1,18 @@
 import _ from 'lodash';
 import axios from 'axios';
 import { emitRequestsProgress } from './progress';
-const shortid = require('shortid');
 
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
 const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
 export const CATEGORIES = [
-    {_id: shortid.generate(), category: 'Work'}, 
-    {_id: shortid.generate(), category: 'Study'},
-    {_id: shortid.generate(), category: 'Other'}
+    { category: 'Work' }, 
+    { category: 'Study' },
+    { category: 'Other' }
 ];
 export const TYPES = [
-    {_id: shortid.generate(), type: 'New'},
-    {_id: shortid.generate(), type:  'Renewal'}
+    { type: 'New' },
+    { type: 'Renewal' }
 ];
 
 function appts(responses) {

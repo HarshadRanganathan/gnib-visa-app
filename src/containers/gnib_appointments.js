@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
 import CircleProgressBar from '../component/progress_bar';
+import Slots from '../component/slots';
+
+const GNIB_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm';
 
 class GNIBAppointments extends Component {
     componentDidMount() {
@@ -14,28 +17,17 @@ class GNIBAppointments extends Component {
         clearInterval(this.interval);
     }
 
-    renderDts(slots) {
-        return _.map(slots, (slot) => {
-            return (
-                <tr key={slot.id}>
-                    <td><span className="mb-1 text-success">{slot.time}</span></td>
-                    <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
-                </tr>
-            );
-        });
-    }
-
     renderTypes(types) {
         return Object.keys(types).map(type => {
             const { slots, empty } = types[type]
             if(slots) {
                 return (
-                    <div key={types[type]._id}>
+                    <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
                         <div>
                             <table className="table">
                                 <tbody>
-                                    {this.renderDts(slots)}
+                                    <Slots data={slots} link={GNIB_URL} />
                                 </tbody>
                             </table>
                         </div>
@@ -43,7 +35,7 @@ class GNIBAppointments extends Component {
                 );
             } if(empty) {
                 return (
-                    <div key={types[type]._id}>
+                    <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
                         <table className="table">
                             <tbody>
@@ -61,7 +53,7 @@ class GNIBAppointments extends Component {
     renderAppointments(gnib) { 
         return Object.keys(gnib).map(cat => {
             return (
-                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={gnib[cat]._id}>
+                <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={cat}>
                     <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                         <h5 className="mb-1">{cat}</h5>
                     </div><br />
