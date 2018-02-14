@@ -4,6 +4,8 @@ import { fetchVisaAppointmentAvailDts, INDIVIDUAL, FAMILY } from '../actions/vis
 import CircleProgressBar from '../component/progress_bar';
 import Slots from '../component/slots';
 
+const RE_ENTRY_VISA_URL = 'https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm';
+
 class VISAAppointments extends Component {
     componentDidMount() {
        this.props.fetchVisaAppointmentAvailDts();
@@ -19,7 +21,7 @@ class VISAAppointments extends Component {
             return _.map(appts, ({ date, slots, empty }) => {
                 if(slots) {
                     return (
-                        <Slots key={date} data={slots} />
+                        <Slots key={date} data={slots} link={RE_ENTRY_VISA_URL} />
                     );
                 }
             });
@@ -41,7 +43,7 @@ class VISAAppointments extends Component {
                         <td className="display-linebreak">
                             <span className="mb-1 text-success">{_.map(slots, 'time').join("\n")}</span>
                         </td>
-                        <td><button type="button" className="btn btn-dark btn-sm float-right">Book</button></td>
+                        <td><a href={RE_ENTRY_VISA_URL} target="_blank" className="btn btn-dark btn-sm float-right">Book</a></td>
                     </tr>
                 );
             }
@@ -88,7 +90,7 @@ class VISAAppointments extends Component {
         return Object.keys(visa).map(type => {
             if(type == INDIVIDUAL) {
                 return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]}>
                         <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                             <h5 className="mb-1">{type}</h5>
                         </div><br />
@@ -103,7 +105,7 @@ class VISAAppointments extends Component {
                 );
             } else if(type == FAMILY) {
                 return (
-                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]._id}>
+                    <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={visa[type]}>
                         <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                             <h5 className="mb-1">{type}</h5>
                         </div><br />
@@ -118,11 +120,18 @@ class VISAAppointments extends Component {
         const { visa } = this.props; 
         if(_.isEmpty(visa)) {
             return <CircleProgressBar text={this.props.progress.percent} progress={this.props.progress.percent/100}/>;
+        } else if(visa.error) {
+            return (<div className="mt-5 alert alert-danger" role="alert">{visa.error}</div>);
         } else {
             return (
-                <div>
-                    <div className="list-group">{this.renderAppointments(visa)}</div><br />
-                </div>
+                <React.Fragment>
+                    <div className="list-group">
+                        {this.renderAppointments(visa)}
+                    </div><br />
+                    <div class="alert alert-info" role="alert">
+                        Emergency appointment slots to be directly checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
+                    </div>
+                </React.Fragment>
             );
         }
     }

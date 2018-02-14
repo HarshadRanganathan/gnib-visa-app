@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { VISA_APPOINTMENT_DATES, TYPES, INDIVIDUAL, FAMILY } from '../actions/visa';
+import { VISA_APPOINTMENT_DATES, VISA_API_ERROR, TYPES, INDIVIDUAL, FAMILY } from '../actions/visa';
 const url = require('url');
 const querystring = require('querystring');
 
@@ -27,11 +27,13 @@ export default function(state={}, action) {
     switch(action.type) {
         case VISA_APPOINTMENT_DATES:
             let response = {};
-            _.map(TYPES, ({ _id, type }) => {
-                const typeObj = { [type]: { _id, appts: [] } };
+            _.map(TYPES, ({ type }) => {
+                const typeObj = { [type]: { appts: [] } };
                 response = _.merge(response, typeObj)
             });
             return payloadTransformer(response, action.payload);
+        case VISA_API_ERROR:
+            return action;
         default:
             return state;
     }

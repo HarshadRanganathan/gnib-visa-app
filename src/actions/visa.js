@@ -3,16 +3,16 @@ import axios from 'axios';
 import { emitRequestsProgress } from './progress';
 const url = require('url');
 const querystring = require('querystring');
-const shortid = require('shortid');
 
 export const VISA_APPOINTMENT_DATES = 'VISA_APPOINTMENT_DATES';
+export const VISA_API_ERROR = 'VISA_API_ERROR';
 export const INDIVIDUAL = 'Individual';
 export const FAMILY = 'Family';
 export const IND_CODE = 'I';
 export const FAM_CODE = 'F';
 export const TYPES = [
-    {_id: shortid.generate(), type: `${INDIVIDUAL}`, code: `${IND_CODE}`},
-    {_id: shortid.generate(), type: `${FAMILY}`, code: `${FAM_CODE}`}
+    { type: `${INDIVIDUAL}`, code: `${IND_CODE}` },
+    { type: `${FAMILY}`, code: `${FAM_CODE}` }
 ];
 
 const ST_PATH = 'website/INISOA/IOA.nsf';
@@ -71,11 +71,11 @@ export function fetchVisaAppointmentAvailDts(responseCallback) {
                 dispatch(appts(responses));        
             })
             .catch((error) => {
-                console.log(error);                
+                dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});                           
             });
         })
         .catch((error) => {
-            console.log(error);            
+            dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});           
         });
     };
 }
