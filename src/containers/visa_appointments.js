@@ -124,14 +124,14 @@ class VISAAppointments extends Component {
             return (<div className="mt-5 alert alert-danger" role="alert">{visa.error}</div>);
         } else {
             return (
-                <React.Fragment>
+                <div>
                     <div className="list-group">
                         {this.renderAppointments(visa)}
                     </div><br />
                     <div className="alert alert-info" role="alert">
                         Emergency appointment slots to be directly checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
                     </div>
-                </React.Fragment>
+                </div>
             );
         }
     }

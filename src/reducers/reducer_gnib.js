@@ -5,9 +5,9 @@ const querystring = require('querystring');
 
 function payloadTransformer(payload) {
     let response = {};
-    _.map(payload, (payload) => {
-        const { request, data } = payload;
-        const { cat, typ } = querystring.parse(url.parse(request.responseURL).query);
+    _.map(payload, (payload) => {        
+        const { config, data } = payload;
+        const { cat, typ } = querystring.parse(url.parse(config.url).query);
         response = _.merge(response, { [cat]: { [typ]: data} });
     });
     return response;

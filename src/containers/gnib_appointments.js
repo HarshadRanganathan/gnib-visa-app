@@ -69,9 +69,9 @@ class GNIBAppointments extends Component {
             return (<div className="mt-5 alert alert-danger" role="alert">{gnib.error}</div>);
         } else {
             return (
-                <React.Fragment>
+                <div>
                     <div className="list-group">{this.renderAppointments(gnib)}</div><br />
-                </React.Fragment>
+                </div>
             );
         }
     }

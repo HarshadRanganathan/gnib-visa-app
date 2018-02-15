@@ -46,9 +46,9 @@ function getRequests(date, code) {
 
 function requestAppts(payload) {
     return _.flatMap(payload, (payload) => {
-        const { request, data } = payload;
+        const { config, data } = payload;
         const { dates } = data;
-        const { type: code } = querystring.parse(url.parse(request.responseURL).query);
+        const { type: code } = querystring.parse(url.parse(config.url).query);
         if(dates) {
             return _.flatMap(dates, (date) => {
                 return getRequests(date, code);                  

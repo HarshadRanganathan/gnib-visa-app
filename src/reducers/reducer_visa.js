@@ -5,8 +5,8 @@ const querystring = require('querystring');
 
 function payloadTransformer(response, payload) {
     _.map(payload, (payload) => {
-        const { request, data } = payload;
-        const { dt, type: code, num } = querystring.parse(url.parse(request.responseURL).query);        
+        const { config, data } = payload;
+        const { dt, type: code, num } = querystring.parse(url.parse(config.url).query);        
         const { type } = _.find(TYPES, ['code', code]);
         if(type == INDIVIDUAL) {
             response[INDIVIDUAL].appts.push(_.merge({ date: dt }, data));
