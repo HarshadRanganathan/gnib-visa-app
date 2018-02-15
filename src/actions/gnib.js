@@ -5,6 +5,7 @@ import { emitRequestsProgress } from './progress';
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
 const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
+export const GNIB_API_ERROR = 'GNIB_API_ERROR';
 export const CATEGORIES = [
     { category: 'Work' }, 
     { category: 'Study' },
@@ -43,8 +44,7 @@ export function fetchGnibAppointmentAvailDts(responseCallback) {
             dispatch(appts(responses));
         })
         .catch((error) => {
-            /* TODO: UI handling */
-            console.log(error);
+            dispatch({type: GNIB_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});
         });
     };
 }

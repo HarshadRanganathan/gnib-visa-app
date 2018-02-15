@@ -24,16 +24,14 @@ class GNIBAppointments extends Component {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
-                        <div>
-                            <table className="table">
-                                <tbody>
-                                    <Slots data={slots} link={GNIB_URL} />
-                                </tbody>
-                            </table>
-                        </div>
+                        <table className="table">
+                            <tbody>
+                                <Slots data={slots} link={GNIB_URL} />
+                            </tbody>
+                        </table>
                     </div>
                 );
-            } if(empty) {
+            } else if(empty) {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
@@ -67,11 +65,13 @@ class GNIBAppointments extends Component {
         const { gnib } = this.props;
         if(_.isEmpty(gnib)) {
             return <CircleProgressBar text={this.props.progress.percent} progress={this.props.progress.percent/100}/>;
+        } else if(gnib.error) {
+            return (<div className="mt-5 alert alert-danger" role="alert">{gnib.error}</div>);
         } else {
             return (
-                <div>
+                <React.Fragment>
                     <div className="list-group">{this.renderAppointments(gnib)}</div><br />
-                </div>
+                </React.Fragment>
             );
         }
     }

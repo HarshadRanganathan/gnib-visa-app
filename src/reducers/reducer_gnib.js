@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { GNIB_APPOINTMENT_DATES, CATEGORIES, TYPES } from '../actions/gnib';
+import { GNIB_APPOINTMENT_DATES, GNIB_API_ERROR, CATEGORIES, TYPES } from '../actions/gnib';
 const url = require('url');
 const querystring = require('querystring');
 
@@ -17,6 +17,8 @@ export default function(state={}, action) {
     switch(action.type) {
         case GNIB_APPOINTMENT_DATES:
             return payloadTransformer(action.payload);
+        case GNIB_API_ERROR:
+            return action;
         default:
             return state;
     }

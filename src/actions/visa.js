@@ -71,11 +71,11 @@ export function fetchVisaAppointmentAvailDts(responseCallback) {
                 dispatch(appts(responses));        
             })
             .catch((error) => {
-                dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});                           
+                dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});
             });
         })
         .catch((error) => {
-            dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});           
+            dispatch({type: VISA_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});
         });
     };
 }
