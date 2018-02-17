@@ -129,7 +129,7 @@ class VISAAppointments extends Component {
                         {this.renderAppointments(visa)}
                     </div><br />
                     <div className="alert alert-info" role="alert">
-                        Emergency appointment slots to be directly checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
+                        Emergency appointment slots to be checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
                     </div>
                 </div>
             );

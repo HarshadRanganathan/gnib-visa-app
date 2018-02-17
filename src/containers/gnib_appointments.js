@@ -20,7 +20,7 @@ class GNIBAppointments extends Component {
     renderTypes(types) {
         return Object.keys(types).map(type => {
             const { slots, empty } = types[type]
-            if(slots) {
+            if(!_.isEmpty(slots)) {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
@@ -31,7 +31,7 @@ class GNIBAppointments extends Component {
                         </table>
                     </div>
                 );
-            } else if(empty) {
+            } else if(empty || slots.length == 0) {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
@@ -71,6 +71,14 @@ class GNIBAppointments extends Component {
             return (
                 <div>
                     <div className="list-group">{this.renderAppointments(gnib)}</div><br />
+                    <div className="alert alert-info" role="alert">
+                        Make sure to book your renewal appointment up to 10 weeks before your registration expires.
+                    </div>
+                    <div className="alert alert-info" role="alert">
+                        <b>Extra appointments</b><br />
+                        If you need an appointment within the next 2-3 weeks, check at 2:30pm every day.<br />
+                        A small number of extra near-term appointments are released every afternoon. If you do not find a near-term appointment straightaway, keep trying. It may take you 2 or 3 days to find one.
+                    </div>
                 </div>
             );
         }

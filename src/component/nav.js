@@ -2,6 +2,7 @@ import React from 'react';
 import GNIBAppointments from '../containers/gnib_appointments';
 import VISAAppointments from '../containers/visa_appointments';
 import ToolBar from '../containers/tool_bar';
+import Disqus from '../component/disqus';
 
 const Nav = () => {
     return (
@@ -22,7 +23,8 @@ const Nav = () => {
                 <div className="tab-pane fade" id="visa" role="tabpanel" aria-labelledby="visa-tab">
                     <VISAAppointments />
                 </div>
-            </div>
+            </div><br />
+            <Disqus />
         </div>
     );
 }
