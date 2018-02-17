@@ -1,0 +1,64 @@
+[
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Work&sbcat=All&typ=New"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Work&sbcat=All&typ=Renewal"
+    }
+  },
+  {
+    "data": {
+      "slots": []
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Study&sbcat=All&typ=New"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "29 March 2018 - 11:00",
+          "id": "C46CC181B3CE60CA8025822E00370655"
+        }
+      ]
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Study&sbcat=All&typ=Renewal"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "27 February 2018 - 09:00",
+          "id": "7FF688B4AF591A34802582100036F7C5"
+        },
+        {
+          "time": "12 March 2018 - 09:00",
+          "id": "72EBE86B43941A4D8025821D0036F8B8"
+        }
+      ]
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Other&sbcat=All&typ=New"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/gnib-proxy/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=Other&sbcat=All&typ=Renewal"
+    }
+  }
+]

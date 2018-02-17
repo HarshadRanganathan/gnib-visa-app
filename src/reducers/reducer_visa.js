@@ -31,7 +31,7 @@ export default function(state={}, action) {
                 const typeObj = { [type]: { appts: [] } };
                 response = _.merge(response, typeObj)
             });
-            return payloadTransformer(response, action.payload);
+            return payloadTransformer(response, action.payload);  
         case VISA_API_ERROR:
             return action;
         default:

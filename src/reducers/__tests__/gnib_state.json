@@ -1,0 +1,40 @@
+{
+    "Other": {
+      "New": {
+        "slots": [
+          {
+            "id": "7FF688B4AF591A34802582100036F7C5",
+            "time": "27 February 2018 - 09:00"
+          },
+          {
+            "id": "72EBE86B43941A4D8025821D0036F8B8",
+            "time": "12 March 2018 - 09:00"
+          }
+        ]
+      },
+      "Renewal": {
+        "empty": "TRUE"
+      }
+    },
+    "Study": {
+      "New": {
+        "slots": []
+      },
+      "Renewal": {
+        "slots": [
+          {
+            "id": "C46CC181B3CE60CA8025822E00370655",
+            "time": "29 March 2018 - 11:00"
+          }
+        ]
+      }
+    },
+    "Work": {
+      "New": {
+        "empty": "TRUE"
+      },
+      "Renewal": {
+        "empty": "TRUE"
+      }
+    }
+  }

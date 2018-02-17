@@ -1,0 +1,219 @@
+[
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "27 February 2018 - 09:00",
+          "id": "7FF688B4AF591A34802582100036F7C5"
+        },
+        {
+          "time": "27 February 2018 - 10:00",
+          "id": "72EBE86B43941A4D802587FF688B4AF5"
+        }
+      ]
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=I&num=x"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "1 March 2018 - 03:00",
+          "id": "A348025821591A34802582100036F7C5"
+        },
+        {
+          "time": "1 March 2018 - 05:00",
+          "id": "4D802587FF683941A4FF688B4AF50000"
+        }
+      ]
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=I&num=x"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "27 February 2018 - 09:00",
+          "id": "AF591A88B4AF591A34802582100036F7C5"
+        },
+        {
+          "time": "27 February 2018 - 10:00",
+          "id": "E86B4BE86B43941A4D802587FF688B4AF5"
+        }
+      ]
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=1"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=2"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=3"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=4"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=5"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=6"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=7"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=8"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=9"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=27/02/2018&type=F&num=10"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "1 March 2018 - 03:00",
+          "id": "100036F21591A34802582100036F7C50"
+        },
+        {
+          "time": "1 March 2018 - 05:00",
+          "id": "F688B4A7FF683941A4FF688B4AF50000"
+        }
+      ]
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=1"
+    }
+  },
+  {
+    "data": {
+      "slots": [
+        {
+          "time": "1 March 2018 - 05:00",
+          "id": "1A4FF688BFF683941A4FF688B4AF50000"
+        }
+      ]
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=2"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=3"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=4"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=5"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=6"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=7"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=8"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=9"
+    }
+  },
+  {
+    "data": {
+      "empty": "TRUE"
+    },
+    "config": {
+      "url": "/visa-proxy/website/INISOA/IOA.nsf/(getApps4DT)?openagent&dt=01/03/2018&type=F&num=10"
+    }
+  }
+]
