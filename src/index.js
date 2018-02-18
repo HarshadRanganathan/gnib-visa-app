@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import App from './component/app';
 import reducers from './reducers';
 import { progressTracker } from './actions/progress';
+import style from '../style/style.css';
 
 const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
 progressTracker();

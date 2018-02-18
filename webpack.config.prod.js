@@ -1,14 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 const srcPath = path.join(__dirname, 'src');
 const buildPath = path.join(__dirname, 'public');
 
 module.exports = {
+    devtool: 'cheap-module-source-map',
     entry: ['babel-polyfill', path.join(srcPath, 'index.js')],
     output: {
         path: buildPath,
-        filename: 'bundle.js'
+        filename: '[name].[chunkhash].js',
     },
     module: {
         rules: [
@@ -16,10 +19,24 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [{loader: 'babel-loader'}]
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        { loader: 'css-loader', options: { minimize: true } },
+                        'postcss-loader'
+                    ]
+                })
             }
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -47,9 +64,6 @@ module.exports = {
             }
         }),
         new webpack.HashedModuleIdsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'index.ejs'),
             path: buildPath,
@@ -62,6 +76,12 @@ module.exports = {
                 removeRedundantAttributes: true
             }
         }),
-    ],
-    devtool: 'cheap-module-source-map'
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash].css',
+            allChunks: true
+        }),
+        new StyleExtHtmlWebpackPlugin({
+          minify: true
+        })
+    ]
 };
