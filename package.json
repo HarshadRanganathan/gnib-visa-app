@@ -12,9 +12,10 @@
     "express-server:prod": "node server.js",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "dev": "npm-run-all --parallel webpack-watch express-server:dev test:watch",
-    "build": "webpack --progress --colors",
-    "start": "npm run build && npm run express-server:prod"
+    "dev": "npm-run-all --parallel webpack-watch test:watch express-server:dev",
+    "build": "webpack --config webpack.config.prod.js --progress --colors",
+    "heroku-postbuild": "npm run build",
+    "start": "npm run express-server:prod"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "^22.3.0",
     "nodemon": "^1.14.12",
     "npm-run-all": "^4.1.2",
