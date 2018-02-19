@@ -1,3 +1,16 @@
+# gnib-visa-app
+
+Find appointment slots for GNIB (Irish Residence Permit) and Re-Entry Visa without hassle
+
+This App utilizes:
+- [React](https://reactjs.org/)
+    - [axios](https://www.npmjs.com/package/axios) for promise based http requests
+- [Redux](https://redux.js.org/)
+    - [redux-thunk](https://www.npmjs.com/package/redux-thunk) for middleware
+- [Express](https://www.npmjs.com/package/express) minimalist web framework
+- [Webpack](https://webpack.github.io/) for bundling
+- [Babel](https://babeljs.io/) for transpiling
+
 # Dev Tools
 
 [React Chrome Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
@@ -27,7 +40,7 @@ Sample `static.json` file to be placed in root directory:
 
 ```
 {
-    "root": ".",
+    "root": "public/",
     "routes": {
         "/**": "index.html"
     }
@@ -36,4 +49,8 @@ Sample `static.json` file to be placed in root directory:
 
 Issues:
 
-    -   CORS error in accessing domain `burghquayregistrationoffice.inis.gov.ie`: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://gnib-visa-app.herokuapp.com' is therefore not allowed access.
+    -   CORS error in accessing domain: No 'Access-Control-Allow-Origin' header is present on the requested resource. 
+
+## Approach 2
+
+Run React with Express web server
