@@ -53,4 +53,16 @@ Issues:
 
 ## Approach 2
 
-Run React with Express web server
+React with Express web server (proxy middleware) to overcome CORS issue
+
+## Additional Resources
+
+[Let’s Encrypt](https://letsencrypt.org/) - Open Certificate Authority
+
+[SSL Server Test](https://www.ssllabs.com/ssltest/analyze.html) - Deep analysis of the configuration of any SSL web server 
+
+[Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights) - Reports on the real-world performance of a page for mobile and desktop devices and provides suggestions on how that page may be improved
+
+[Google Search Console](https://www.google.com/webmasters/tools/home?hl=en) - Tool to monitor and maintain your site's presence in Google Search results
+
+[Google Analytics](https://analytics.google.com/analytics/web/) - Analytics tools to measure website, app, digital and offline data to gain customer insights
