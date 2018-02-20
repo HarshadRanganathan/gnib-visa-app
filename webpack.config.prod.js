@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const srcPath = path.join(__dirname, 'src');
 const buildPath = path.join(__dirname, 'public');
 
@@ -86,6 +87,13 @@ module.exports = {
         }),
         new StyleExtHtmlWebpackPlugin({
           minify: true
+        }),
+        new CompressionPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+            threshold: 10240,
+            minRatio: 0.8
         })
     ]
 };
