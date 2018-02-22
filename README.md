@@ -19,14 +19,19 @@ You'll need Node & NPM installed on your local development machine.
 
 #### `npm run dev`
 Runs the app in development mode with webpack recompiling and tests re-run whenever any files change.
+
 Open http://localhost:8080 (defaults to port 8080) to view the app in the browser.
+
 The page will automatically reload if you make changes to the code.
 
 ### Production mode
 
 #### `npm run build`
 Builds the app for production to the `public` folder.
+
 It bundles React in production mode, minifies the files and the filenames include the hashes.
 
 #### `npm start`
-Runs the app in express server. Open http://localhost:8080 (defaults to port 8080) to view it in the browser.
+Runs the app in express server. 
+
+Open http://localhost:8080 (defaults to port 8080) to view it in the browser.
