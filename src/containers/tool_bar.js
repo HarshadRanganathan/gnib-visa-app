@@ -33,7 +33,7 @@ class ToolBar extends Component {
         const refresh = this.state.refresh; 
         return (
             <div>
-                <p>Last Updated: {time} (Auto refresh every 15 mins)</p>
+                <p>Last Updated: {time} (Auto refresh every 5 mins)</p>
                 <button type="button" className="btn btn-link float-right" onClick={this.refreshData} >
                     <i className={`fa fa-refresh fa-lg ${refresh? 'rotate': ''}`}></i>
                 </button>

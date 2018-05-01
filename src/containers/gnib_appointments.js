@@ -10,7 +10,7 @@ const GNIB_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG
 class GNIBAppointments extends Component {
     componentDidMount() {
         this.props.fetchGnibAppointmentAvailDts();
-        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 900000);
+        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 300000);
     }
 
     componentWillUnmount() {
@@ -72,12 +72,14 @@ class GNIBAppointments extends Component {
                 <div>
                     <div className="list-group">{this.renderAppointments(gnib)}</div><br />
                     <div className="alert alert-info" role="alert">
-                        Make sure to book your renewal appointment up to 10 weeks before your registration expires.
+                        New appointments are added for dates 9 weeks into the future every weekday at 10am. Keep checking the appointment system at 10am everyday until you find one.
                     </div>
                     <div className="alert alert-info" role="alert">
                         <b>Extra appointments</b><br />
                         If you need an appointment within the next 2-3 weeks, check at 2:30pm every day.<br />
-                        A small number of extra near-term appointments are released every afternoon. If you do not find a near-term appointment straightaway, keep trying. It may take you 2 or 3 days to find one.
+                        A small number of extra near-term appointments are released every afternoon. <br />
+                        If you do not find a near-term appointment straightaway, keep trying. It may take you 2 or 3 days to find one.<br />
+                        Extra appointments are also released for some weekday evenings to help.
                     </div>
                 </div>
             );

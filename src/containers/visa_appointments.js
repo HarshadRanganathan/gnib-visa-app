@@ -9,7 +9,7 @@ const RE_ENTRY_VISA_URL = 'https://reentryvisa.inis.gov.ie/website/INISOA/IOA.ns
 class VISAAppointments extends Component {
     componentDidMount() {
        this.props.fetchVisaAppointmentAvailDts();
-       this.interval = setInterval(this.props.fetchVisaAppointmentAvailDts, 900000);
+       this.interval = setInterval(this.props.fetchVisaAppointmentAvailDts, 300000);
     }
 
     componentWillUnmount() {
@@ -130,6 +130,9 @@ class VISAAppointments extends Component {
                     </div><br />
                     <div className="alert alert-info" role="alert">
                         Emergency appointment slots to be checked at <a href={RE_ENTRY_VISA_URL} target="_blank">reentryvisa.inis.gov.ie</a>
+                    </div>
+                    <div className="alert alert-info" role="alert">
+                    The stamp in your passport is your evidence of your immigration status in the State. This stamp is sufficient for applying for a Re Entry visa and, if appropriate, for taking up employment.
                     </div>
                 </div>
             );
