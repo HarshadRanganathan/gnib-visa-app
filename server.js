@@ -10,14 +10,16 @@ app.use('/gnib-proxy', proxy({
         '^/gnib-proxy/': '/'
     },
     target: 'https://burghquayregistrationoffice.inis.gov.ie',
-    secure: false
+    secure: false,
+    changeOrigin: true
 }));
 app.use('/visa-proxy', proxy({
     pathRewrite: {
         '^/visa-proxy/': '/'
     },
     target: 'https://reentryvisa.inis.gov.ie',
-    secure: false
+    secure: false,
+    changeOrigin: true
 }));
 app.listen(port);
 console.log('Server started');
