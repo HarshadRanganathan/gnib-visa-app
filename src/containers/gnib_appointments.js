@@ -10,7 +10,7 @@ const GNIB_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG
 class GNIBAppointments extends Component {
     componentDidMount() {
         this.props.fetchGnibAppointmentAvailDts();
-        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 300000);
+        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 60000);
     }
 
     componentWillUnmount() {

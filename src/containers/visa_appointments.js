@@ -9,7 +9,7 @@ const RE_ENTRY_VISA_URL = 'https://reentryvisa.inis.gov.ie/website/INISOA/IOA.ns
 class VISAAppointments extends Component {
     componentDidMount() {
        this.props.fetchVisaAppointmentAvailDts();
-       this.interval = setInterval(this.props.fetchVisaAppointmentAvailDts, 300000);
+       this.interval = setInterval(this.props.fetchVisaAppointmentAvailDts, 60000);
     }
 
     componentWillUnmount() {
