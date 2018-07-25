@@ -1,149 +1,157 @@
 {
-    "Individual": {
-      "appts": [
-        {
-          "date": "27/02/2018",
-          "slots": [
-            {
-              "time": "27 February 2018 - 09:00",
-              "id": "7FF688B4AF591A34802582100036F7C5"
-            },
-            {
-              "time": "27 February 2018 - 10:00",
-              "id": "72EBE86B43941A4D802587FF688B4AF5"
-            }
-          ]
-        },
-        {
-          "date": "01/03/2018",
-          "slots": [
-            {
-              "time": "1 March 2018 - 03:00",
-              "id": "A348025821591A34802582100036F7C5"
-            },
-            {
-              "time": "1 March 2018 - 05:00",
-              "id": "4D802587FF683941A4FF688B4AF50000"
-            }
-          ]
-        }
-      ]
-    },
-    "Family": {
-      "appts": [
-        {
-          "date": "27/02/2018",
-          "familyMembers": [
-            {
-              "num": "1",
-              "slots": [
-                {
-                  "time": "27 February 2018 - 09:00",
-                  "id": "AF591A88B4AF591A34802582100036F7C5"
-                },
-                {
-                  "time": "27 February 2018 - 10:00",
-                  "id": "E86B4BE86B43941A4D802587FF688B4AF5"
-                }
-              ]
-            },
-            {
-              "num": "2",
-              "empty": "TRUE"
-            },
-            {
-              "num": "3",
-              "empty": "TRUE"
-            },
-            {
-              "num": "4",
-              "empty": "TRUE"
-            },
-            {
-              "num": "5",
-              "empty": "TRUE"
-            },
-            {
-              "num": "6",
-              "empty": "TRUE"
-            },
-            {
-              "num": "7",
-              "empty": "TRUE"
-            },
-            {
-              "num": "8",
-              "empty": "TRUE"
-            },
-            {
-              "num": "9",
-              "empty": "TRUE"
-            },
-            {
-              "num": "10",
-              "empty": "TRUE"
-            }
-          ]
-        },
-        {
-          "date": "01/03/2018",
-          "familyMembers": [
-            {
-              "num": "1",
-              "slots": [
-                {
-                  "time": "1 March 2018 - 03:00",
-                  "id": "100036F21591A34802582100036F7C50"
-                },
-                {
-                  "time": "1 March 2018 - 05:00",
-                  "id": "F688B4A7FF683941A4FF688B4AF50000"
-                }
-              ]
-            },
-            {
-              "num": "2",
-              "slots": [
-                {
-                  "time": "1 March 2018 - 05:00",
-                  "id": "1A4FF688BFF683941A4FF688B4AF50000"
-                }
-              ]
-            },
-            {
-              "num": "3",
-              "empty": "TRUE"
-            },
-            {
-              "num": "4",
-              "empty": "TRUE"
-            },
-            {
-              "num": "5",
-              "empty": "TRUE"
-            },
-            {
-              "num": "6",
-              "empty": "TRUE"
-            },
-            {
-              "num": "7",
-              "empty": "TRUE"
-            },
-            {
-              "num": "8",
-              "empty": "TRUE"
-            },
-            {
-              "num": "9",
-              "empty": "TRUE"
-            },
-            {
-              "num": "10",
-              "empty": "TRUE"
-            }
-          ]
-        }
-      ]
-    }
+  "Individual": {
+    "appts": [
+      {
+        "date": "25/07/2018",
+        "slots": [
+          {
+            "id": "572E4A350F6A4757802582D5001B892B",
+            "time": "25 July 2018 - 08:30 AM"
+          },
+          {
+            "id": "A8C1CFBC418A5370802582D5001B893E",
+            "time": "25 July 2018 - 09:30 AM"
+          },
+          {
+            "id": "D160430C4D531AF3802582D5001B8962",
+            "time": "25 July 2018 - 10:30 AM"
+          },
+          {
+            "id": "650F0AB1F2E3E8C7802582D5001B8965",
+            "time": "25 July 2018 - 11:30 AM"
+          }
+        ]
+      },
+      {
+        "date": "25/07/2018",
+        "slots": [
+          {
+            "id": "A348025821591A34802582100036F7C5",
+            "time": "25 July 2018 - 08:30 AM"
+          },
+          {
+            "id": "4D802587FF683941A4FF688B4AF50000",
+            "time": "25 July 2018 - 09:30 AM"
+          }
+        ]
+      }
+    ]
+  },
+  "Family": {
+    "appts": [
+      {
+        "date": "25/07/2018",
+        "familyMembers": [
+          {
+            "num": "1",
+            "slots": [
+              {
+                "id": "AF591A88B4AF591A34802582100036F7C5",
+                "time": "25 July 2018 - 11:30 AM"
+              },
+              {
+                "id": "E86B4BE86B43941A4D802587FF688B4AF5",
+                "time": "25 July 2018 - 10:30 AM"
+              }
+            ]
+          },
+          {
+            "empty": "TRUE",
+            "num": "2"
+          },
+          {
+            "empty": "TRUE",
+            "num": "3"
+          },
+          {
+            "empty": "TRUE",
+            "num": "4"
+          },
+          {
+            "empty": "TRUE",
+            "num": "5"
+          },
+          {
+            "empty": "TRUE",
+            "num": "6"
+          },
+          {
+            "empty": "TRUE",
+            "num": "7"
+          },
+          {
+            "empty": "TRUE",
+            "num": "8"
+          },
+          {
+            "empty": "TRUE",
+            "num": "9"
+          },
+          {
+            "empty": "TRUE",
+            "num": "10"
+          }
+        ]
+      },
+      {
+        "date": "26/07/2018",
+        "familyMembers": [
+          {
+            "num": "1",
+            "slots": [
+              {
+                "id": "100036F21591A34802582100036F7C50",
+                "time": "26 July 2018 - 08:30 AM"
+              },
+              {
+                "id": "F688B4A7FF683941A4FF688B4AF50000",
+                "time": "26 July 2018 - 09:30 AM"
+              }
+            ]
+          },
+          {
+            "num": "2",
+            "slots": [
+              {
+                "id": "1A4FF688BFF683941A4FF688B4AF50000",
+                "time": "26 July 2018 - 09:30 AM"
+              }
+            ]
+          },
+          {
+            "empty": "TRUE",
+            "num": "3"
+          },
+          {
+            "empty": "TRUE",
+            "num": "4"
+          },
+          {
+            "empty": "TRUE",
+            "num": "5"
+          },
+          {
+            "empty": "TRUE",
+            "num": "6"
+          },
+          {
+            "empty": "TRUE",
+            "num": "7"
+          },
+          {
+            "empty": "TRUE",
+            "num": "8"
+          },
+          {
+            "empty": "TRUE",
+            "num": "9"
+          },
+          {
+            "empty": "TRUE",
+            "num": "10"
+          }
+        ]
+      }
+    ]
   }
+}

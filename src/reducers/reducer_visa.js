@@ -2,9 +2,19 @@ import _ from 'lodash';
 import { VISA_APPOINTMENT_DATES, VISA_API_ERROR, TYPES, INDIVIDUAL, FAMILY } from '../actions/visa';
 const url = require('url');
 const querystring = require('querystring');
+const moment = require('moment');
+
+function formatTimeSlots({data}) {
+    if(data.slots) {
+        _.forEach(data.slots, (slot) => {
+            _.setWith(slot, 'time', moment(slot.time, 'DD/MM/YYYY hh:mm A').format('DD MMMM YYYY - hh:mm A')); 
+        });
+    } 
+}
 
 function payloadTransformer(response, payload) {
     _.map(payload, (payload) => {
+        formatTimeSlots(payload);
         const { config, data } = payload;
         const { dt, type: code, num } = querystring.parse(url.parse(config.url).query);        
         const { type } = _.find(TYPES, ['code', code]);
