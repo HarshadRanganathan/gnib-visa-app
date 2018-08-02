@@ -6,9 +6,9 @@ const App = () => {
     return(
         <div>
             <h3 className="text-center">GNIB (IRP) &amp; Re-Entry Visa Appointments</h3><br />
-            <div className="text-center">
-                <a href="https://m.me/dbei-bot" target="_blank">Get Notified Of Stamp 4 Support Letter Current Processing Dates Via Messenger</a>
-            </div><br />
+            <button type="button" className="btn float-right" onClick={() => window.location.href='https://m.me/dbei-bot'}>
+                <i className="fab fa-facebook-messenger fa-w-14 fa-1x"></i><span className="pl-2">Stamp 4 Notification</span>
+            </button>
             <Nav />
             <Disqus />
         </div>

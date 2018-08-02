@@ -35,7 +35,7 @@ class ToolBar extends Component {
             <div>
                 <p>Last Updated: {time} (Auto refresh every minute)</p>
                 <button type="button" className="btn btn-link float-right" onClick={this.refreshData} >
-                    <i className={`fa fa-refresh fa-lg ${refresh? 'rotate': ''}`}></i>
+                    <i className={`fas fa-sync-alt ${refresh? 'rotate': ''}`}></i>
                 </button>
             </div>
         );
