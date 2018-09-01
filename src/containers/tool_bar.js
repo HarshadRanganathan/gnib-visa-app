@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
-import { fetchVisaAppointmentAvailDts } from '../actions/visa';
 
 class ToolBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {refresh: false, gnib_data_refresh: false, visa_data_refresh: false};
+        this.state = {refresh: false, gnib_data_refresh: false};
         this.refreshData = this.refreshData.bind(this);
     }
 
@@ -16,15 +15,11 @@ class ToolBar extends Component {
             this.setState({gnib_data_refresh: true});
             this.refreshComplete();
         });
-        this.props.fetchVisaAppointmentAvailDts(() => {
-            this.setState({visa_data_refresh: true});
-            this.refreshComplete();
-        });
     }
 
     refreshComplete() {
-        if(this.state.gnib_data_refresh && this.state.visa_data_refresh) {
-            this.setState({refresh: false, gnib_data_refresh: false, visa_data_refresh: false});
+        if(this.state.gnib_data_refresh) {
+            this.setState({refresh: false, gnib_data_refresh: false});
         }
     }
 
@@ -46,4 +41,4 @@ function mapStateToProps({ lastUpdate }) {
     return { lastUpdate };
 }
 
-export default connect(mapStateToProps, { fetchGnibAppointmentAvailDts, fetchVisaAppointmentAvailDts })(ToolBar);
+export default connect(mapStateToProps, { fetchGnibAppointmentAvailDts })(ToolBar);

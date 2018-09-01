@@ -13,13 +13,5 @@ app.use('/gnib-proxy', proxy({
     secure: false,
     changeOrigin: true
 }));
-app.use('/visa-proxy', proxy({
-    pathRewrite: {
-        '^/visa-proxy/': '/'
-    },
-    target: 'https://reentryvisa.inis.gov.ie',
-    secure: false,
-    changeOrigin: true
-}));
 app.listen(port);
 console.log('Server started');

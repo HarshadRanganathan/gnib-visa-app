@@ -1,5 +1,5 @@
 # gnib-visa-app
-Find appointment slots for GNIB (Irish Residence Permit) and Re-Entry Visa without hassle.
+Find appointment slots for GNIB (Irish Residence Permit) without hassle.
 
 App is hosted at https://gnib-visa-app.rharshad.com/
 
