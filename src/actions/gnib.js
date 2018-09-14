@@ -26,7 +26,7 @@ function appts(responses) {
 function requestAppts() {
     return _.flatMap(CATEGORIES, ({category}) => {
         return _.map(TYPES, ({type}) => {
-            const URL = `${ROOT_URL}/(getAppsNear)?openpage&cat=${category}&sbcat=All&typ=${type}`;
+            const URL = `${ROOT_URL}/(getAppsNear)?readform&cat=${category}&sbcat=All&typ=${type}`;
             return axios.get(URL);
         });
     });
