@@ -3,7 +3,6 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import { emitRequestsProgress } from './progress';
 
-const GNIB_PAGE_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm';
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
 const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
@@ -26,7 +25,7 @@ function appts(responses) {
 }
 
 async function getPageKey() {
-    let pageResponse = await axios.get(GNIB_PAGE_URL);
+    let pageResponse = await axios.get(`${ROOT_URL}/AppSelect?OpenForm`);
     let $ = cheerio.load(pageResponse.data);
     let k = $('#k').val();
     let p = $('#p').val();
