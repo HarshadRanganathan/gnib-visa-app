@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import axios from 'axios';
+import cheerio from 'cheerio';
 import { emitRequestsProgress } from './progress';
 
+const GNIB_PAGE_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm';
 const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
 const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
@@ -23,10 +25,18 @@ function appts(responses) {
     };
 }
 
-function requestAppts() {
+async function getPageKey() {
+    let pageResponse = await axios.get(GNIB_PAGE_URL);
+    let $ = cheerio.load(pageResponse.data);
+    let k = $('#k').val();
+    let p = $('#p').val();
+    return `k=${k}&p=${p}`;
+}
+
+function requestAppts(pageKey) {
     return _.flatMap(CATEGORIES, ({category}) => {
         return _.map(TYPES, ({type}) => {
-            const URL = `${ROOT_URL}/(getAppsNear)?readform&cat=${category}&sbcat=All&typ=${type}`;
+            const URL = `${ROOT_URL}/(getAppsNear)?readform&cat=${category}&sbcat=All&typ=${type}&${pageKey}`;
             return axios.get(URL);
         });
     });
@@ -35,7 +45,11 @@ function requestAppts() {
 export function fetchGnibAppointmentAvailDts(responseCallback) {    
     return (dispatch) => {
         emitRequestsProgress(dispatch);
-        axios.all(requestAppts())
+
+        getPageKey()
+        .then((pageKey) => {
+            return axios.all(requestAppts(pageKey))
+        })
         .then((responses) => {
             if(responseCallback) responseCallback();
             return responses;
