@@ -18,3 +18,8 @@
 .display-linebreak {
   white-space: pre-line;
 }
+
+.btn{
+  white-space:normal !important;
+  word-wrap: break-word; 
+}
