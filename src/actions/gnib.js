@@ -7,6 +7,7 @@ const ST_PATH = 'Website/AMSREG/AMSRegWeb.nsf';
 const ROOT_URL = `/gnib-proxy/${ST_PATH}`;
 export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
 export const GNIB_API_ERROR = 'GNIB_API_ERROR';
+export const PAGE_KEY = 'PAGE_KEY';
 export const CATEGORIES = [
     { category: 'Work' }, 
     { category: 'Study' },
@@ -24,14 +25,6 @@ function appts(responses) {
     };
 }
 
-async function getPageKey() {
-    let pageResponse = await axios.get(`${ROOT_URL}/AppSelect?OpenForm`);
-    let $ = cheerio.load(pageResponse.data);
-    let k = $('#k').val();
-    let p = $('#p').val();
-    return `k=${k}&p=${p}`;
-}
-
 function requestAppts(pageKey) {
     return _.flatMap(CATEGORIES, ({category}) => {
         return _.map(TYPES, ({type}) => {
@@ -41,22 +34,22 @@ function requestAppts(pageKey) {
     });
 }
 
-export function fetchGnibAppointmentAvailDts(responseCallback) {    
+export async function getPageKey() {
+    let pageResponse = await axios.get(`${ROOT_URL}/AppSelect?OpenForm`);
+    let $ = cheerio.load(pageResponse.data);
+    let k = $('#k').val();
+    let p = $('#p').val();
+    return `k=${k}&p=${p}`;
+}
+
+export function fetchGnibAppointmentAvailDts() {    
     return (dispatch) => {
         emitRequestsProgress(dispatch);
-
-        getPageKey()
-        .then((pageKey) => {
-            return axios.all(requestAppts(pageKey))
-        })
+        axios.all(requestAppts(sessionStorage.getItem(PAGE_KEY)))
         .then((responses) => {
-            if(responseCallback) responseCallback();
-            return responses;
+            dispatch(appts(responses))
         })
-        .then((responses) => {
-            dispatch(appts(responses));
-        })
-        .catch((error) => {
+        .catch((err) => {
             dispatch({type: GNIB_API_ERROR, error: 'We are temporarily facing issues in getting the available appointment slots. Please try again after some time.'});
         });
     };
