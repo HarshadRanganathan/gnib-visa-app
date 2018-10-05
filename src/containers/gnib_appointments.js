@@ -1,14 +1,17 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchGnibAppointmentAvailDts } from '../actions/gnib';
+import { PAGE_KEY, getPageKey, fetchGnibAppointmentAvailDts } from '../actions/gnib';
 import CircleProgressBar from '../component/progress_bar';
 import Slots from '../component/slots';
 
 const GNIB_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm';
 
 class GNIBAppointments extends Component {
-    componentDidMount() {
+    async componentDidMount() {
+        const pageKey = await getPageKey();
+        sessionStorage.setItem(PAGE_KEY, pageKey);
+
         this.props.fetchGnibAppointmentAvailDts();
         this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 60000);
     }
