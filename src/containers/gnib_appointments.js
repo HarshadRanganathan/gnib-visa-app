@@ -22,8 +22,8 @@ class GNIBAppointments extends Component {
 
     renderTypes(types) {
         return Object.keys(types).map(type => {
-            const { slots, empty } = types[type]
-            if(!_.isEmpty(slots)) {
+            const { slots } = types[type]
+            if(!_.isEmpty(slots) && !_.includes(slots, "empty")) {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
@@ -34,7 +34,7 @@ class GNIBAppointments extends Component {
                         </table>
                     </div>
                 );
-            } else if(empty || slots.length == 0) {
+            } else {
                 return (
                     <div key={type}>
                         <h6 className="mb-1 p-2">{type}</h6>
