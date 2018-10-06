@@ -276,6 +276,23 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
+            <div className="card">
+                <div className="card-header" id="visa-heading-5">
+                    <h5 className="mb-0">
+                        <button className="btn btn-link" data-toggle="collapse" data-target="#visa-collapse-5" aria-expanded="false" aria-controls="visa-collapse-5">
+                        Can I send documents for my family together ?
+                        </button>
+                    </h5>
+                </div>
+                <div id="visa-collapse-5" className="collapse" aria-labelledby="visa-heading-5" data-parent="#accordion">
+                    <div className="card-body">
+                    If you are making applications for more than 1 person (eg a family), submit them together. To do so:<br/><br/>
+                    1. Place each person's application documents into separate ordinary envelopes<br/><br/>
+                    2. Write the name of each applicant on each envelope<br/><br/>
+                    3. Then place each envelope into a larger (padded) envelope<br/><br/>
+                    </div>
+                </div>
+            </div>
             <br />
             <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                <h5 className="mb-1">Stamp 4 Support Letter</h5>
