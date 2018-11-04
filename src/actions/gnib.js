@@ -42,11 +42,12 @@ export async function getPageKey() {
     return `k=${k}&p=${p}`;
 }
 
-export function fetchGnibAppointmentAvailDts() {    
+export function fetchGnibAppointmentAvailDts(callback) {    
     return (dispatch) => {
         emitRequestsProgress(dispatch);
         axios.all(requestAppts(sessionStorage.getItem(PAGE_KEY)))
         .then((responses) => {
+            if(callback) callback();
             dispatch(appts(responses))
         })
         .catch((err) => {
