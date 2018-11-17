@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/HarshadRanganathan/gnib-visa-app.svg?branch=master)](https://travis-ci.com/HarshadRanganathan/gnib-visa-app)
+
 # gnib-visa-app
 Find appointment slots for GNIB (Irish Residence Permit) without hassle.
 
