@@ -10,7 +10,6 @@ before_install:
   -in travis_rsa.enc -out travis_rsa -d
 - chmod 600 travis_rsa
 - mv travis_rsa ~/.ssh/id_rsa
-- cat travis_rsa.pub >> $HOME/.ssh/known_hosts
+- cat server.pub >> $HOME/.ssh/known_hosts
 after_success:
-- npm run build
 - bash ./deploy.sh
