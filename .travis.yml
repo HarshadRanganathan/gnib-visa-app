@@ -1,0 +1,15 @@
+sudo: true
+language: node_js
+node_js:
+- node
+git:
+  quiet: true
+cache: npm
+before_install:
+- openssl aes-256-cbc -K $encrypted_d818d6090208_key -iv $encrypted_d818d6090208_iv
+  -in travis_rsa.enc -out travis_rsa -d
+- chmod 600 travis_rsa
+- mv travis_rsa ~/.ssh/id_rsa
+- cat server.pub >> $HOME/.ssh/known_hosts
+after_success:
+- bash ./deploy.sh
