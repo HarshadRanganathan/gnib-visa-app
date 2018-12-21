@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { GNIB_APPOINTMENT_DATES, GNIB_API_ERROR, CATEGORIES, TYPES } from '../actions/gnib';
+import { GNIB_APPOINTMENT_DATES, GNIB_API_ERROR } from '../actions/gnib';
 const url = require('url');
 const querystring = require('querystring');
 
