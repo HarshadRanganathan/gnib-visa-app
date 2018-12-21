@@ -1,6 +1,6 @@
 import React from 'react';
 import GNIBAppointments from '../containers/gnib_appointments';
-import VisaAppointments from './visa_appointments';
+import VisaAppointments from '../containers/visa_appointments';
 import Faq from './faq';
 import ToolBar from '../containers/tool_bar';
 

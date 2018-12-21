@@ -34,6 +34,7 @@
   "devDependencies": {
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -42,7 +43,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.3.0",
-    "nodemon": "^1.14.12",
+    "nodemon": "^1.18.9",
     "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.0",
     "redux-devtools-extension": "^2.13.2",
@@ -50,7 +51,7 @@
     "style-ext-html-webpack-plugin": "^3.4.7",
     "style-loader": "^0.20.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
     "axios": "^0.17.1",

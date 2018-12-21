@@ -16,5 +16,13 @@ app.use('/gnib-proxy', proxy({
         referer: 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm'
     }
 }));
+app.use('/inis-proxy', proxy({
+    pathRewrite: {
+        '^/inis-proxy/': '/'
+    },
+    target: 'http://www.inis.gov.ie',
+    secure: false,
+    changeOrigin: true
+}));
 app.listen(port);
 console.log('Server started');

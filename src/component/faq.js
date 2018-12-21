@@ -293,6 +293,20 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
+            <div className="card">
+                <div className="card-header" id="visa-heading-6">
+                    <h5 className="mb-0">
+                        <button className="btn btn-link" data-toggle="collapse" data-target="#visa-collapse-6" aria-expanded="false" aria-controls="visa-collapse-6">
+                        Can I get multi entry visa during my emergency appointment ?
+                        </button>
+                    </h5>
+                </div>
+                <div id="visa-collapse-6" className="collapse" aria-labelledby="visa-heading-6" data-parent="#accordion">
+                    <div className="card-body">
+                    In some circumstances you can by paying 200 EUR.
+                    </div>
+                </div>
+            </div>
             <br />
             <div className="d-flex w-100 justify-content-between bg-dark text-white p-2">
                <h5 className="mb-1">Stamp 4 Support Letter</h5>
