@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles } from '@material-ui/core';
 
@@ -16,13 +16,13 @@ const styles = theme => ({
 
 const Faq = ({ classes }) => {
     return (
-        <React.Fragment>
+        <Fragment>
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography variant="title" component="h2" className={classes.titlePos}>GNIB (IRP)</Typography>
+                    <Typography variant="h6" component="h2" className={classes.titlePos}>GNIB (IRP)</Typography>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 My GNIB is expiring soon but I have got an appointment only for a later date. Will that constitute an illegal stay ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -34,7 +34,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I pay the registration fees using my forex card ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -46,7 +46,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I pay the registration fees using cash ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -58,7 +58,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I forgot to bring a supporting document for my appointment. Will I be sent back and asked to book another appointment ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -70,7 +70,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 To what address will my IRP card be posted ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -82,7 +82,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 How many days will it take to receive my IRP card ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -94,7 +94,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I haven't received my IRP card by post even after 10 working days. What should I do ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -106,7 +106,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I haven't received my IRP card and I suspect that it might have been sent to an incorrect address. What should I do ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -119,7 +119,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I'm currently on Stamp 1 and I haven't received my Stamp 4 support letter yet. My GNIB/IRP is going to expire soon. What should I do ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -133,7 +133,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I accidentally cancelled my appointment. What should I do ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -146,7 +146,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I haven't been able to get an appointment and my GNIB/IRP is going to expire soon. What are my options ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -161,7 +161,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I recently applied for a stamp change. Should I renew my re entry visa ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -175,10 +175,10 @@ const Faq = ({ classes }) => {
             </Card>
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography variant="title" component="h2" className={classes.titlePos}>Re-Entry Visa</Typography>
+                    <Typography variant="h6" component="h2" className={classes.titlePos}>Re-Entry Visa</Typography>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I haven't got my IRP card by post. Can I apply for a re-entry visa ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -190,7 +190,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 I'm waiting for my IRP card and have a valid re-entry visa. Can I travel to another country and return to Ireland before my visa expiry ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -202,7 +202,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 How soon will I receive a decision ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -216,7 +216,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 How are the documents and visa returned back to me ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -228,7 +228,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I travel to UK without a tourist visa ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -240,7 +240,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I send documents for my family together ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -255,7 +255,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I get multi entry visa during my emergency appointment ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -269,10 +269,10 @@ const Faq = ({ classes }) => {
             </Card>
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography variant="title" component="h2" className={classes.titlePos}>Stamp 4 Support Letter</Typography>
+                    <Typography variant="h6" component="h2" className={classes.titlePos}>Stamp 4 Support Letter</Typography>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Will I receive an acknowledgement after I send my support letter request form with required documents ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -284,7 +284,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                                 Can I track the current processing dates for stamp 4 support letter ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -296,7 +296,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
-                            <Typography variant="subheading">
+                            <Typography variant="subtitle1">
                             I haven't received my support letter even though it has been issued. What should I do ?
                             </Typography>
                         </ExpansionPanelSummary>
@@ -310,7 +310,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                 </CardContent>
             </Card>
-        </React.Fragment>
+        </Fragment>
     );
 }
 

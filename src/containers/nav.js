@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import GNIBAppointments from './gnib_appointments';
 import VisaAppointments from './visa_appointments';
@@ -28,7 +28,7 @@ class Nav extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <React.Fragment>
+            <Fragment>
                 <Paper className={classes.root}>
                     <Tabs 
                         value={this.state.value}
@@ -45,7 +45,7 @@ class Nav extends Component {
                 {this.state.value === 'gnib' && <GNIBAppointments />}
                 {this.state.value === 'visa' && <VisaAppointments />}
                 {this.state.value === 'faq' && <Faq />}
-            </React.Fragment>
+            </Fragment>
         );
     }
 }

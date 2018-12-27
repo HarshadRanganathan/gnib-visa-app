@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Nav from '../containers/nav';
 import Disqus from '../component/disqus';
@@ -15,18 +15,18 @@ const styles = {
 
 const App = ({classes}) => {
     return(
-        <React.Fragment>
+        <Fragment>
             <div className={classes.root}>
                 <AppBar position="static">
                     <Toolbar>
-                        <Typography variant="title" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
+                        <Typography variant="h6" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
                         <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
                         <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
                     </Toolbar>
                 </AppBar>
                 <Nav />
             </div>
-        </React.Fragment>
+        </Fragment>
     );
 }
 
