@@ -1,19 +1,37 @@
 import React from 'react';
-import Nav from './nav';
+import PropTypes from 'prop-types';
+import Nav from '../containers/nav';
 import Disqus from '../component/disqus';
+import { AppBar, Toolbar, Typography, Button, withStyles, IconButton } from '@material-ui/core';
 
-const App = () => {
+const styles = {
+    root: {
+        flexGrow: 1
+    },
+    grow: {
+        flexGrow: 1
+    }
+};
+
+const App = ({classes}) => {
     return(
-        <div>
-            <a href="https://www.paypal.me/harshadranganathan" target="_blank"><img className="float-right" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"/></a><br />
-            <h3 className="text-center">GNIB (IRP) &amp; Re-Entry Visa Appointments</h3><br />
-            <button type="button" className="btn float-right" onClick={() => window.location.href='https://m.me/dbei-bot'}>
-                <i className="fab fa-facebook-messenger fa-w-14 fa-1x"></i><span className="pl-2">Stamp 4 Notification</span>
-            </button>
-            <Nav />
-            <Disqus />
-        </div>
+        <React.Fragment>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="title" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
+                        <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
+                        <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
+                    </Toolbar>
+                </AppBar>
+                <Nav />
+            </div>
+        </React.Fragment>
     );
 }
 
-export default App;
+App.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(App);
