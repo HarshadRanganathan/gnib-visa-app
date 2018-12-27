@@ -25,6 +25,7 @@ const App = ({classes}) => {
                     </Toolbar>
                 </AppBar>
                 <Nav />
+                <Disqus />
             </div>
         </Fragment>
     );

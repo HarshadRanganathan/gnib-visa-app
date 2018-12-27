@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles, Card, CardContent, Typography, LinearProgress, Table, TableHead, TableBody, TableRow, TableCell, List, ListItem, ListItemText } from '@material-ui/core';
+import { withStyles, Card, CardContent, Typography, LinearProgress, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import { PAGE_KEY, getPageKey, fetchGnibAppointmentAvailDts } from '../actions/gnib';
 
 const APPT_TITLE = "Available Appointments";
@@ -52,15 +52,13 @@ class GNIBAppointments extends Component {
         if(!_.isEmpty(slots) && !_.includes(slots, "empty")) {
             return(
                 <TableCell>
-                    <List>
-                        {
-                            _.map(slots, (slot) => {
-                                return (
-                                    <Typography key={slot.id} className={classes.textSuccess}>{slot.time}</Typography>
-                                );
-                            })
-                        }
-                    </List>
+                    {
+                        _.map(slots, (slot) => {
+                            return (
+                                <Typography key={slot.id} className={classes.textSuccess}>{slot.time}</Typography>
+                            );
+                        })
+                    }
                 </TableCell>
             );
         } else {
