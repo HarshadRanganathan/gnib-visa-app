@@ -3,9 +3,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles, Card, CardContent, Typography, LinearProgress, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import Responsive from 'react-responsive';
 import { PAGE_KEY, getPageKey, fetchGnibAppointmentAvailDts } from '../actions/gnib';
 
 const APPT_TITLE = "Available Appointments";
+const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Default = props => <Responsive {...props} minWidth={768} />;
 
 const styles = theme => ({
     card: {
@@ -29,6 +32,26 @@ const styles = theme => ({
     },
     table: {
         minWidth: 340,
+    }, 
+    tableCell: {
+        padding: '4px 0px 4px 4px'
+    },
+    refreshBtn: {
+        float: 'right'
+    },
+    label: {
+        display: 'inline-block',
+        lineHeight: 1,
+        textAlign: 'center',
+        whiteSpace: 'nowrap',
+        verticalAlign: 'baseline',
+        padding: '4px 8px',
+        borderRadius: '2px',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: '#2196F3',
+        marginTop: '4px',
+        marginBottom: '4px'
     }
 });
 
@@ -66,6 +89,30 @@ class GNIBAppointments extends Component {
         }
     }
 
+    renderMobileSlots(classes, category, { slots }) {
+        if(!_.isEmpty(slots) && !_.includes(slots, "empty")) {
+            return(
+                <TableCell className={classes.tableCell}>
+                    <Typography className={classes.label}>{category}</Typography>
+                    {
+                        _.map(slots, (slot) => {
+                            return (
+                                <Typography key={slot.id} className={classes.textSuccess}>{slot.time}</Typography>
+                            );
+                        })
+                    }
+                </TableCell>
+            );
+        } else {
+            return(
+                <TableCell>
+                    <Typography className={classes.label}>{category}</Typography>
+                    <Typography className={classes.textError}>Not Available</Typography>
+                </TableCell>
+            );
+        }
+    }
+
     renderAppointments(classes, gnib) { 
         if(_.isEmpty(gnib)) {
             return (
@@ -90,28 +137,53 @@ class GNIBAppointments extends Component {
                 <Card className={classes.card}>
                     <CardContent>
                         <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-                        <Table className={classes.table}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Category</TableCell>
-                                    <TableCell>New</TableCell>
-                                    <TableCell>Renewal</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {
-                                    Object.keys(gnib).map(cat => {
-                                        return (
-                                            <TableRow key={cat}>
-                                                <TableCell component="th" scope="row">{cat}</TableCell>
-                                                {this.renderSlots(classes, gnib[cat]['New'])}
-                                                {this.renderSlots(classes, gnib[cat]['Renewal'])}
-                                            </TableRow>
-                                        );
-                                    })
-                                }
-                            </TableBody>
-                        </Table>
+                        <Typography className={classes.titlePos}>Last Updated: {this.props.lastUpdate.time}</Typography>
+                        <Default>
+                            <Table className={classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Category</TableCell>
+                                        <TableCell>New</TableCell>
+                                        <TableCell>Renewal</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        Object.keys(gnib).map(cat => {
+                                            return (
+                                                <TableRow key={cat}>
+                                                    <TableCell component="th" scope="row">{cat}</TableCell>
+                                                    {this.renderSlots(classes, gnib[cat]['New'])}
+                                                    {this.renderSlots(classes, gnib[cat]['Renewal'])}
+                                                </TableRow>
+                                            );
+                                        })
+                                    }
+                                </TableBody>
+                            </Table>
+                        </Default>
+                        <Mobile>
+                            <Table className={classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>New</TableCell>
+                                        <TableCell>Renewal</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        Object.keys(gnib).map(cat => {
+                                            return (
+                                                <TableRow key={cat}>
+                                                    {this.renderMobileSlots(classes, cat, gnib[cat]['New'])}
+                                                    {this.renderMobileSlots(classes, cat, gnib[cat]['Renewal'])}
+                                                </TableRow>
+                                            );
+                                        })
+                                    }
+                                </TableBody>
+                            </Table>
+                        </Mobile>
                     </CardContent>
                 </Card>
             );
@@ -153,8 +225,8 @@ class GNIBAppointments extends Component {
     }
 }
 
-function mapStateToProps({ progress, gnib }) {
-    return { progress, gnib };
+function mapStateToProps({ progress, lastUpdate, gnib }) {
+    return { progress, lastUpdate, gnib };
 }
 
 GNIBAppointments.propTypes = {

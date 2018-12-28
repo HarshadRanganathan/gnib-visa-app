@@ -2,7 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Nav from '../containers/nav';
 import Disqus from '../component/disqus';
-import { AppBar, Toolbar, Typography, Button, withStyles, IconButton } from '@material-ui/core';
+import Footer from '../component/footer';
+import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
+import Responsive from 'react-responsive';
+
+const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Default = props => <Responsive {...props} minWidth={768} />;
 
 const styles = {
     root: {
@@ -17,15 +22,26 @@ const App = ({classes}) => {
     return(
         <Fragment>
             <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
-                        <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
-                        <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
-                    </Toolbar>
-                </AppBar>
+                <Default>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
+                            <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
+                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
+                        </Toolbar>
+                    </AppBar>
+                </Default>
+                <Mobile>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography color="inherit" className={classes.grow}>GN...Appointments</Typography>
+                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
+                        </Toolbar>
+                    </AppBar>
+                </Mobile>
                 <Nav />
                 <Disqus />
+                <Footer />
             </div>
         </Fragment>
     );
