@@ -15,8 +15,8 @@ const styles = theme => ({
         overflowX: 'auto',
         marginTop: theme.spacing.unit * 2,
         marginBottom: theme.spacing.unit * 2,
-        marginLeft: theme.spacing.unit * 6,
-        marginRight: theme.spacing.unit * 6
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2
     },
     titlePos: {
         marginBottom: theme.spacing.unit * 2

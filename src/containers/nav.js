@@ -7,9 +7,9 @@ import { Paper, Tabs, Tab, withStyles } from '@material-ui/core';
 
 const styles = theme => ({
     root: {
-        marginTop: theme.spacing.unit * 6,
-        marginLeft: theme.spacing.unit * 6,
-        marginRight: theme.spacing.unit * 6
+        marginTop: theme.spacing.unit * 2,
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2
     }
 });
 
