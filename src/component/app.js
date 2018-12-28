@@ -1,19 +1,54 @@
-import React from 'react';
-import Nav from './nav';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Nav from '../containers/nav';
 import Disqus from '../component/disqus';
+import Footer from '../component/footer';
+import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
+import Responsive from 'react-responsive';
 
-const App = () => {
+const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Default = props => <Responsive {...props} minWidth={768} />;
+
+const styles = {
+    root: {
+        flexGrow: 1
+    },
+    grow: {
+        flexGrow: 1
+    }
+};
+
+const App = ({classes}) => {
     return(
-        <div>
-            <a href="https://www.paypal.me/harshadranganathan" target="_blank"><img className="float-right" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"/></a><br />
-            <h3 className="text-center">GNIB (IRP) &amp; Re-Entry Visa Appointments</h3><br />
-            <button type="button" className="btn float-right" onClick={() => window.location.href='https://m.me/dbei-bot'}>
-                <i className="fab fa-facebook-messenger fa-w-14 fa-1x"></i><span className="pl-2">Stamp 4 Notification</span>
-            </button>
-            <Nav />
-            <Disqus />
-        </div>
+        <Fragment>
+            <div className={classes.root}>
+                <Default>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
+                            <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
+                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
+                        </Toolbar>
+                    </AppBar>
+                </Default>
+                <Mobile>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography color="inherit" className={classes.grow}>GN...Appointments</Typography>
+                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
+                        </Toolbar>
+                    </AppBar>
+                </Mobile>
+                <Nav />
+                <Disqus />
+                <Footer />
+            </div>
+        </Fragment>
     );
 }
 
-export default App;
+App.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(App);
