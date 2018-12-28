@@ -25,6 +25,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 My GNIB is expiring soon but I have got an appointment only for a later date. Will that constitute an illegal stay ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -37,6 +38,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I pay the registration fees using my forex card ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -49,6 +51,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I pay the registration fees using cash ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -61,6 +64,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I forgot to bring a supporting document for my appointment. Will I be sent back and asked to book another appointment ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -73,6 +77,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 To what address will my IRP card be posted ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -85,6 +90,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 How many days will it take to receive my IRP card ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -97,6 +103,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I haven't received my IRP card by post even after 10 working days. What should I do ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -109,6 +116,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I haven't received my IRP card and I suspect that it might have been sent to an incorrect address. What should I do ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -122,6 +130,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I'm currently on Stamp 1 and I haven't received my Stamp 4 support letter yet. My GNIB/IRP is going to expire soon. What should I do ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -136,6 +145,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I accidentally cancelled my appointment. What should I do ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -149,6 +159,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I haven't been able to get an appointment and my GNIB/IRP is going to expire soon. What are my options ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -164,6 +175,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I recently applied for a stamp change. Should I renew my re entry visa ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -181,6 +193,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I haven't got my IRP card by post. Can I apply for a re-entry visa ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -193,6 +206,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 I'm waiting for my IRP card and have a valid re-entry visa. Can I travel to another country and return to Ireland before my visa expiry ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -205,6 +219,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 How soon will I receive a decision ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -219,6 +234,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 How are the documents and visa returned back to me ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -231,6 +247,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I travel to UK without a tourist visa ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -243,6 +260,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I send documents for my family together ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -258,6 +276,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I get multi entry visa during my emergency appointment ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -275,6 +294,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Will I receive an acknowledgement after I send my support letter request form with required documents ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -287,6 +307,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                                 Can I track the current processing dates for stamp 4 support letter ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
@@ -299,6 +320,7 @@ const Faq = ({ classes }) => {
                             <Typography variant="subtitle1">
                             I haven't received my support letter even though it has been issued. What should I do ?
                             </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
