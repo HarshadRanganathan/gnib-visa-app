@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import GNIBAppointments from './gnib_appointments';
 import VisaAppointments from './visa_appointments';
+import Notifications from './notifications';
 import Faq from '../component/faq';    
 import { Paper, Tabs, Tab, withStyles } from '@material-ui/core';
 
@@ -39,11 +40,13 @@ class Nav extends Component {
                     >
                         <Tab value="gnib" label="GNIB (IRP)" />
                         <Tab value="visa" label="Re-Entry Visa" />
+                        <Tab value="notifications" label="Notifications" />
                         <Tab value="faq" label="FAQ" />
                     </Tabs>
                 </Paper>
                 {this.state.value === 'gnib' && <GNIBAppointments />}
                 {this.state.value === 'visa' && <VisaAppointments />}
+                {this.state.value === 'notifications' && <Notifications />}
                 {this.state.value === 'faq' && <Faq />}
             </Fragment>
         );
