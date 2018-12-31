@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "jest": {
+    "testURL": "http://localhost"
+  },
   "scripts": {
     "webpack-watch": "webpack -d --watch",
     "express-server:dev": "nodemon server.js",
