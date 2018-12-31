@@ -106,7 +106,7 @@ class Notifications extends Component {
                         If you had previously blocked notifications from the site in your browser settings then you need to unblock it. Check out <a href="https://support.google.com/chrome/answer/3220216">Turn notifications on or off for Chrome.</a>
                     </Typography>
                     <Snackbar 
-                        anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                        anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
                         open={this.state.snackbar}
                         autoHideDuration={3000}
                         onClose={() => this.setState({ snackbar: false, snackbarMessage: '' })}

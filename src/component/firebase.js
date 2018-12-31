@@ -10,10 +10,20 @@ const config = {
 };
 
 firebase.initializeApp(config);
-
 const messaging = firebase.messaging();
-
 const firestore = firebase.firestore();
+
+/* register service worker */
+window.addEventListener('load', async () => {
+    if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.register('/firebase-messaging-sw.js', {
+            updateViaCache: 'none'
+        });
+        registration.update();
+        messaging.useServiceWorker(registration);
+    }
+});
+
 firestore.settings({
     timestampsInSnapshots: true
 });
