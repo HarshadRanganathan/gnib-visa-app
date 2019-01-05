@@ -4,6 +4,7 @@ import { withStyles, Card, CardContent, Typography, Switch, FormControlLabel, Sn
 import { firebase, messaging, firestore } from '../component/firebase';
 
 const INSTANCE_TOKEN = 'instanceToken';
+const GNIB_APPT_NOTIF_SUBSCRIBED = 'gnibApptNotificationSubscribed';
 const FIRESTORE_TOKEN_COLLECTION = 'instance_tokens';
 
 const styles = theme => ({
@@ -22,64 +23,93 @@ class Notifications extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { subscriptionToggleSwitch: false, snackbar: false, snackbarMessage: '' };
-        this.subscriptionToggle = this.subscriptionToggle.bind(this);
-        this.subscribe = this.subscribe.bind(this);
-        this.unsubscribe = this.unsubscribe.bind(this);
+        this.state = { gnibApptSubscriptionToggleSwitch: false, snackbar: false, snackbarMessage: '' };
+        this.gnibApptSubscriptionToggle = this.gnibApptSubscriptionToggle.bind(this);
+        this.subscribeGnibApptNotifications = this.subscribeGnibApptNotifications.bind(this);
+        this.unsubscribeGnibApptNotifications = this.unsubscribeGnibApptNotifications.bind(this);
+        this.notificationPermission = this.notificationPermission.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
     }
 
     componentDidMount() {
-        localStorage.getItem(INSTANCE_TOKEN) !== null ? this.setState({ subscriptionToggleSwitch: true }) : this.setState({ subscriptionToggleSwitch: false });
+        localStorage.getItem(GNIB_APPT_NOTIF_SUBSCRIBED) === "TRUE" ? this.setState({ gnibApptSubscriptionToggleSwitch: true }) : this.setState({ gnibApptSubscriptionToggleSwitch: false });
     }
 
     displayMessage(message) {
         this.setState({ snackbar: true, snackbarMessage: message });
     }
 
-    async sendTokenToServer(curToken) {
+    async sendTokenToDb(curToken) {
         await firestore.collection(FIRESTORE_TOKEN_COLLECTION).add({ token: curToken, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
     }
 
-    async deleteTokenFromServer(curToken) {
-        const deleteQuery = firestore.collection(FIRESTORE_TOKEN_COLLECTION).where('token', '==', curToken);
-        const querySnapshot = await deleteQuery.get();
-        _.forEach(querySnapshot.docs, async (doc) => {
-            await doc.ref.delete();
-        });
+    async deleteTokenFromDb() {
+        try {
+            /* if no active subscriptions then delete the token from db */
+            if(localStorage.getItem(GNIB_APPT_NOTIF_SUBSCRIBED) === null) {
+                const curToken = localStorage.getItem(INSTANCE_TOKEN);
+                const deleteQuery = firestore.collection(FIRESTORE_TOKEN_COLLECTION).where('token', '==', curToken);
+                const querySnapshot = await deleteQuery.get();
+                _.forEach(querySnapshot.docs, async (doc) => {
+                    await doc.ref.delete();
+                });
+                localStorage.removeItem(INSTANCE_TOKEN);
+            }            
+        } catch(err) {
+            console.log(err);
+        }        
     }
 
-    async subscribe() {
+    async notificationPermission() {
+        let permissionGranted = false;
         try {
-            await messaging.requestPermission();
-            const curToken = await messaging.getToken();
-            await this.sendTokenToServer(curToken);
-            localStorage.setItem(INSTANCE_TOKEN, curToken);
-            this.setState({ subscriptionToggleSwitch: true });
-            this.displayMessage(<span>Notifications have been enabled for your device</span>);
+            /* request permission if not granted */
+            if(Notification.permission !== 'granted') {
+                await messaging.requestPermission(); 
+            }
+            /* get instance token if not available */
+            if(localStorage.getItem(INSTANCE_TOKEN) !== null) {
+                permissionGranted = true;
+            } else {
+                const curToken = await messaging.getToken();
+                await this.sendTokenToDb(curToken);
+                localStorage.setItem(INSTANCE_TOKEN, curToken);
+                permissionGranted = true;
+            }       
         } catch(err) {
             console.log(err);
             if(err.hasOwnProperty('code') && err.code === 'messaging/permission-default') this.displayMessage(<span>You need to allow the site to send notifications</span>);
             else if(err.hasOwnProperty('code') && err.code === 'messaging/permission-blocked') this.displayMessage(<span>Currently, the site is blocked from sending notifications. Please unblock the same in your browser settings.</span>);
             else this.displayMessage(<span>Unable to subscribe you to notifications</span>);
+        } finally {
+            return permissionGranted;
         }
     }
 
-    async unsubscribe() {
+    async subscribeGnibApptNotifications() {
+        const notificationPermission = await this.notificationPermission();
+        if(notificationPermission) {
+            localStorage.setItem(GNIB_APPT_NOTIF_SUBSCRIBED, "TRUE");
+            this.setState({ gnibApptSubscriptionToggleSwitch: true });
+            this.displayMessage(<span>GNIB(IRP) appointment notifications have been enabled for your device</span>);
+        }
+    }
+
+    async unsubscribeGnibApptNotifications() {
         try {
-            await this.deleteTokenFromServer(localStorage.getItem(INSTANCE_TOKEN));
-            localStorage.removeItem(INSTANCE_TOKEN);
-            this.setState({ subscriptionToggleSwitch: false });
+            localStorage.removeItem(GNIB_APPT_NOTIF_SUBSCRIBED);
+            this.setState({ gnibApptSubscriptionToggleSwitch: false });
             this.displayMessage(<span>You have been unsubscribed from notifications</span>);
+            this.deleteTokenFromDb();
         } catch(err) {
             console.log(err);  
             this.displayMessage(<span>Unsubscribe failed</span>);          
         }
     }
 
-    subscriptionToggle(event ,checked) {
-        if(checked) this.subscribe();
-        else this.unsubscribe();
+    gnibApptSubscriptionToggle(event ,checked) {
+        if(checked) this.subscribeGnibApptNotifications();
+        else this.unsubscribeGnibApptNotifications();
     }
 
     renderSubscriptionOptions(classes) {
@@ -97,9 +127,9 @@ class Notifications extends Component {
                 <Fragment>
                     <FormControlLabel 
                         control={<Switch />}
-                        label="Enable/Disable Appointment Notifications"
-                        onChange={this.subscriptionToggle}
-                        checked={this.state.subscriptionToggleSwitch}
+                        label="Enable/Disable GNIB(IRP) Appointment Notifications"
+                        onChange={this.gnibApptSubscriptionToggle}
+                        checked={this.state.gnibApptSubscriptionToggleSwitch}
                     />
                     <Typography>If you enable above option in your desktop browser you will only receive notifications in that platform. To receive notifications in your mobile as well, please enable the option by visiting the site in your mobile browser.</Typography>
                     <Typography className={classes.noteTextPos}>
@@ -108,7 +138,7 @@ class Notifications extends Component {
                     <Snackbar 
                         anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
                         open={this.state.snackbar}
-                        autoHideDuration={3000}
+                        autoHideDuration={5000}
                         onClose={() => this.setState({ snackbar: false, snackbarMessage: '' })}
                         message={this.state.snackbarMessage}
                     />
