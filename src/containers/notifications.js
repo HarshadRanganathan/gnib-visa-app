@@ -1,11 +1,15 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, Card, CardContent, Typography, Switch, FormControlLabel, Snackbar } from '@material-ui/core';
-import { firebase, messaging, firestore } from '../component/firebase';
+import axios from 'axios';
+import { messaging } from '../component/firebase';
 
+const ROOT_URL = 'notification-proxy';
 const INSTANCE_TOKEN = 'instanceToken';
-const GNIB_APPT_NOTIF_SUBSCRIBED = 'gnibApptNotificationSubscribed';
-const FIRESTORE_TOKEN_COLLECTION = 'instance_tokens';
+const GNIB_APPT_NOTIFICATION_SUBSCRIBED = 'gnibApptNotificationSubscribed';
+const GNIB_APPT_NOTIFICATIONS = 'gnibApptNotifications';
+const SUBSCRIBE = 'subscribe';
+const UNSUBSCRIBE = 'unsubscribe';
 
 const styles = theme => ({
     card: {
@@ -32,34 +36,58 @@ class Notifications extends Component {
     }
 
     componentDidMount() {
-        localStorage.getItem(GNIB_APPT_NOTIF_SUBSCRIBED) === "TRUE" ? this.setState({ gnibApptSubscriptionToggleSwitch: true }) : this.setState({ gnibApptSubscriptionToggleSwitch: false });
+        localStorage.getItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED) === "TRUE" ? this.setState({ gnibApptSubscriptionToggleSwitch: true }) : this.setState({ gnibApptSubscriptionToggleSwitch: false });
     }
 
     displayMessage(message) {
         this.setState({ snackbar: true, snackbarMessage: message });
     }
 
-    async sendTokenToDb(curToken) {
-        await firestore.collection(FIRESTORE_TOKEN_COLLECTION).add({ token: curToken, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+    /**
+     * Store app instance tokens in firestore
+     * @param {*} token 
+     */
+    async sendTokenToDb(token) {
+        try {
+            await axios.post(`${ROOT_URL}/storetoken`, { token });
+        } catch(error) {
+            if (error.response) {
+                console.log(error.response.status);
+                console.log(error.response.data);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error: ', error.message);
+            }
+        }
     }
 
+    /**
+     * If there are no active subscriptions then we delete the token from firestore
+     */
     async deleteTokenFromDb() {
         try {
-            /* if no active subscriptions then delete the token from db */
-            if(localStorage.getItem(GNIB_APPT_NOTIF_SUBSCRIBED) === null) {
-                const curToken = localStorage.getItem(INSTANCE_TOKEN);
-                const deleteQuery = firestore.collection(FIRESTORE_TOKEN_COLLECTION).where('token', '==', curToken);
-                const querySnapshot = await deleteQuery.get();
-                _.forEach(querySnapshot.docs, async (doc) => {
-                    await doc.ref.delete();
-                });
+            if(localStorage.getItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED) === null) {
+                const token = localStorage.getItem(INSTANCE_TOKEN);
+                await axios.delete(`${ROOT_URL}/deletetoken`, { data: { token } });
                 localStorage.removeItem(INSTANCE_TOKEN);
             }            
         } catch(err) {
-            console.log(err);
+            if (error.response) {
+                console.log(error.response.status);
+                console.log(error.response.data);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error: ', error.message);
+            }
         }        
     }
 
+    /**
+     * Check if user has already given permission for sending notifications
+     * If not, request permission from user, generate instance token and store it in firestore
+     */
     async notificationPermission() {
         let permissionGranted = false;
         try {
@@ -71,10 +99,10 @@ class Notifications extends Component {
             if(localStorage.getItem(INSTANCE_TOKEN) !== null) {
                 permissionGranted = true;
             } else {
-                const curToken = await messaging.getToken();
-                await this.sendTokenToDb(curToken);
-                localStorage.setItem(INSTANCE_TOKEN, curToken);
-                permissionGranted = true;
+                const token = await messaging.getToken(); // returns the same token on every invocation until refreshed by browser
+                await this.sendTokenToDb(token); 
+                localStorage.setItem(INSTANCE_TOKEN, token);
+                permissionGranted = true;            
             }       
         } catch(err) {
             console.log(err);
@@ -86,27 +114,59 @@ class Notifications extends Component {
         }
     }
 
+    async subscriptionActions(mode, token, topic) {
+        try {
+            return await axios.post(`${ROOT_URL}/${mode}`, { token, topic });
+        } catch(error) {
+            if (error.response) {
+                console.log(error.response.status);
+                console.log(error.response.data);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error: ', error.message);
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Subscribe app instance to notification topic if user permissions given
+     */
     async subscribeGnibApptNotifications() {
         const notificationPermission = await this.notificationPermission();
         if(notificationPermission) {
-            localStorage.setItem(GNIB_APPT_NOTIF_SUBSCRIBED, "TRUE");
-            this.setState({ gnibApptSubscriptionToggleSwitch: true });
-            this.displayMessage(<span>GNIB(IRP) appointment notifications have been enabled for your device</span>);
+            const isSubscribed = await this.subscriptionActions(SUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS);
+            if(isSubscribed) {
+                localStorage.setItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED, "TRUE");
+                this.setState({ gnibApptSubscriptionToggleSwitch: true });
+                this.displayMessage(<span>GNIB(IRP) appointment notifications have been enabled for your device</span>);
+            } else {
+                this.displayMessage(<span>Unable to subscribe you to notifications</span>);
+            }
         }
     }
 
+    /**
+     * Unsubscribe app instance from notification topic
+     */
     async unsubscribeGnibApptNotifications() {
-        try {
-            localStorage.removeItem(GNIB_APPT_NOTIF_SUBSCRIBED);
+        const isUnSubscribed = await this.subscriptionActions(UNSUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS);
+        if(isUnSubscribed) {
+            localStorage.removeItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED);
+            await this.deleteTokenFromDb();
             this.setState({ gnibApptSubscriptionToggleSwitch: false });
             this.displayMessage(<span>You have been unsubscribed from notifications</span>);
-            this.deleteTokenFromDb();
-        } catch(err) {
-            console.log(err);  
-            this.displayMessage(<span>Unsubscribe failed</span>);          
+        } else {
+            this.displayMessage(<span>Unsubscribe failed</span>);   
         }
     }
 
+    /**
+     * Subscribe/UnSubscribe appointment notifications
+     * @param {*} event 
+     * @param {*} checked If true, the component is checked.
+     */
     gnibApptSubscriptionToggle(event ,checked) {
         if(checked) this.subscribeGnibApptNotifications();
         else this.unsubscribeGnibApptNotifications();
@@ -135,13 +195,6 @@ class Notifications extends Component {
                     <Typography className={classes.noteTextPos}>
                         If you had previously blocked notifications from the site in your browser settings then you need to unblock it. Check out <a href="https://support.google.com/chrome/answer/3220216">Turn notifications on or off for Chrome.</a>
                     </Typography>
-                    <Snackbar 
-                        anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                        open={this.state.snackbar}
-                        autoHideDuration={5000}
-                        onClose={() => this.setState({ snackbar: false, snackbarMessage: '' })}
-                        message={this.state.snackbarMessage}
-                    />
                 </Fragment>
             );
         }
@@ -154,6 +207,13 @@ class Notifications extends Component {
                 <Card className={classes.card}>
                     <CardContent>
                         {this.renderSubscriptionOptions(classes)}
+                        <Snackbar 
+                            anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                            open={this.state.snackbar}
+                            autoHideDuration={5000}
+                            onClose={() => this.setState({ snackbar: false, snackbarMessage: '' })}
+                            message={this.state.snackbarMessage}
+                        />
                     </CardContent>
                 </Card>
             </Fragment>

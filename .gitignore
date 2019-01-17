@@ -82,3 +82,5 @@ typings/
 
 # Public directory
 public/
+
+service-account.json*

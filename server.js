@@ -24,5 +24,13 @@ app.use('/inis-proxy', proxy({
     secure: false,
     changeOrigin: true
 }));
+app.use('/notification-proxy', proxy({
+    pathRewrite: {
+        '^/notification-proxy/': '/'
+    },
+    target: 'http://localhost:1338',
+    secure: false,
+    changeOrigin: true
+}));
 app.listen(port);
 console.log('Server started');

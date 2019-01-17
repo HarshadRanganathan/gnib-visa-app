@@ -1,5 +1,4 @@
 const path = require('path');
-const dotenv = require('dotenv');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
@@ -7,20 +6,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const curPath = path.join(__dirname);
 const srcPath = path.join(__dirname, 'src');
 const buildPath = path.join(__dirname, 'public');
 
 module.exports = () => {
-    const fileEnv = dotenv.config({ path: path.join(curPath, '.env') }).parsed;
-    
-    const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
-        prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-        return prev;
-    }, {});
-
-    envKeys['process.env.NODE_ENV'] = JSON.stringify('production');
-
     return {
         devtool: 'cheap-module-source-map',
         entry: ['babel-polyfill', path.join(srcPath, 'index.js')],
@@ -49,7 +38,9 @@ module.exports = () => {
             ]
         },
         plugins: [
-            new webpack.DefinePlugin(envKeys),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': JSON.stringify('production')
+            }),
             new webpack.optimize.ModuleConcatenationPlugin(),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
