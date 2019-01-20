@@ -51,8 +51,15 @@ async function fetchGnibAppointmentAvailDts() {
     try {
         const pageKey = await getPageKey();
         const payload = await axios.all(requestAppts(pageKey));
-        const appts = payloadTransformer(payload);
+        return payloadTransformer(payload);
     } catch (err) {
         console.log(err);
+        return null;
     }
+}
+
+module.exports = {
+    CATEGORIES,
+    TYPES,
+    fetchGnibAppointmentAvailDts
 }

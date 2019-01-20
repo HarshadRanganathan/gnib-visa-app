@@ -7,7 +7,7 @@ import { messaging } from '../component/firebase';
 const ROOT_URL = 'notification-proxy';
 const INSTANCE_TOKEN = 'instanceToken';
 const GNIB_APPT_NOTIFICATION_SUBSCRIBED = 'gnibApptNotificationSubscribed';
-const GNIB_APPT_NOTIFICATIONS = 'gnibApptNotifications';
+const GNIB_APPT_NOTIFICATIONS_TOPIC = 'gnibApptNotifications';
 const SUBSCRIBE = 'subscribe';
 const UNSUBSCRIBE = 'unsubscribe';
 
@@ -136,7 +136,7 @@ class Notifications extends Component {
     async subscribeGnibApptNotifications() {
         const notificationPermission = await this.notificationPermission();
         if(notificationPermission) {
-            const isSubscribed = await this.subscriptionActions(SUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS);
+            const isSubscribed = await this.subscriptionActions(SUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS_TOPIC);
             if(isSubscribed) {
                 localStorage.setItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED, "TRUE");
                 this.setState({ gnibApptSubscriptionToggleSwitch: true });
@@ -151,7 +151,7 @@ class Notifications extends Component {
      * Unsubscribe app instance from notification topic
      */
     async unsubscribeGnibApptNotifications() {
-        const isUnSubscribed = await this.subscriptionActions(UNSUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS);
+        const isUnSubscribed = await this.subscriptionActions(UNSUBSCRIBE, localStorage.getItem(INSTANCE_TOKEN), GNIB_APPT_NOTIFICATIONS_TOPIC);
         if(isUnSubscribed) {
             localStorage.removeItem(GNIB_APPT_NOTIFICATION_SUBSCRIBED);
             await this.deleteTokenFromDb();
