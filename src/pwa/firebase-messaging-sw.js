@@ -6,3 +6,10 @@ firebase.initializeApp({
 });
 
 const messaging = firebase.messaging();
+
+self.addEventListener('notificationclick', (event) => {
+    if (event.action) {
+        clients.openWindow(event.action);
+    }
+    event.notification.close();
+}); 

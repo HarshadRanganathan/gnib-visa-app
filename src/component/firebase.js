@@ -12,16 +12,29 @@ if(firebase.messaging.isSupported()) {
     messaging = firebase.messaging();
 }
 
-// register service worker
-window.addEventListener('load', async () => {
-    if ('serviceWorker' in navigator) {
+// register service worker & handle push events
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
         const registration = await navigator.serviceWorker.register('/firebase-messaging-sw.js', {
             updateViaCache: 'none'
         });
-        registration.update();
         messaging.useServiceWorker(registration);
-    }
-});
+        messaging.onMessage((payload) => {
+            const title = payload.notification.title;
+            const options = {
+                body: payload.notification.body,
+                icon: payload.notification.icon,
+                actions: [
+                    {
+                        action: payload.fcmOptions.link,
+                        title: 'Book Appointment'
+                    }
+                ]
+            };
+            registration.showNotification(title, options);           
+        });
+    });
+}
 
 export {
     messaging

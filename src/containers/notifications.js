@@ -191,9 +191,17 @@ class Notifications extends Component {
                         onChange={this.gnibApptSubscriptionToggle}
                         checked={this.state.gnibApptSubscriptionToggleSwitch}
                     />
-                    <Typography>If you enable above option in your desktop browser you will only receive notifications in that platform. To receive notifications in your mobile as well, please enable the option by visiting the site in your mobile browser.</Typography>
+                    <Typography className={classes.noteTextPos}>
+                        Notifications are delivered real time through your browser. You need to have your browser open (not necessarily the site) inorder to receive the notifications.
+                    </Typography>
+                    <Typography className={classes.noteTextPos}>
+                        To receive notifications in your mobile as well, please enable the option by visiting the site in your mobile browser.
+                    </Typography>
                     <Typography className={classes.noteTextPos}>
                         If you had previously blocked notifications from the site in your browser settings then you need to unblock it. Check out <a href="https://support.google.com/chrome/answer/3220216">Turn notifications on or off for Chrome.</a>
+                    </Typography>
+                    <Typography className={classes.noteTextPos}>
+                        If incase, you are not receiving any notifications then it could be an issue with your browser. Try deleting your browser cache and re-installing it if the issue persists.
                     </Typography>
                 </Fragment>
             );
