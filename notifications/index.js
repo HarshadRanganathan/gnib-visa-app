@@ -1,4 +1,6 @@
 const CronJob = require('cron').CronJob;
+const crypto = require('crypto');
+const spawn = require('child_process').spawn;
 const { checkGnibAppointments } = require('./gnib_appointment_notifications');
 const { axiosInterceptors } = require('./gnib');
 const { storeAppInstanceToken, deleteAppInstanceToken, subscribeAppInstanceToTopic, unsubscribeAppInstanceFromTopic } = require('./firebase');
@@ -7,6 +9,8 @@ const
     express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json());
+
+const pm2AppName = 'gnib-visa-app-notifications';
 
 /**
  * Scheduler for generating appointment notifications
@@ -52,6 +56,25 @@ app.post('/unsubscribe', async(req, res) => {
         result?res.sendStatus(200):res.sendStatus(500);
     } else {
         res.sendStatus(400);
+    }
+});
+
+/**
+ * Github webhook
+ */
+app.post('/pushevent', async(req, res) => {
+    const pushEvent = res.body;
+    const sig = "sha1=" + crypto.createHmac('sha1', secret).update(res.body.toString()).digest('hex');
+    if (req.headers['x-hub-signature'] == sig) {
+        if(pushEvent.ref === 'refs/head/master') {
+            console.log('Master branch has new commits to be pulled');
+            spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' });
+            spawn('npm', ['install'], { stdio: 'inherit' });
+            spawn('pm2', ['restart', pm2AppName], { stdio: 'inherit' });
+        }
+    } else {
+        console.log('Signatures didn\'t match!');
+        res.sendStatus(500);
     }
 });
 
