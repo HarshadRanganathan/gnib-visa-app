@@ -85,3 +85,5 @@ public/
 
 # Notifications
 service-account.json
+appts.json
+pageKey.json

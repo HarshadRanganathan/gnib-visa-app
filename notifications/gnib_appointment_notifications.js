@@ -1,10 +1,11 @@
 const _ = require('lodash');
 const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
 const Memory = require('lowdb/adapters/Memory');
 const { buildPlatformMessage, sendFcmMessage } = require('./firebase');
 const { CATEGORIES, TYPES, fetchGnibAppointmentAvailDts } = require('./gnib');
 
-const db = low(new Memory());
+const db = low(process.env.NODE_ENV === 'test'?new Memory():new FileSync('appts.json'));
 db.defaults({"Work":{"New":{"slots":[]},"Renewal":{"slots":[]}},"Study":{"New":{"slots":[]},"Renewal":{"slots":[]}},"Other":{"New":{"slots":[]},"Renewal":{"slots":[]}}})
   .write();
 
@@ -26,7 +27,7 @@ async function checkGnibAppointments() {
                 
                 if(!_.isEmpty(curSlots)) {
                     const newAppts = _.isNil(prevSlots) || _.isEmpty(prevSlots)? curSlots:_.differenceWith(curSlots, prevSlots, _.isEqual);
-                    if(!_.isEmpty(newAppts)) {
+                    if(!_.isEmpty(newAppts) && !_.includes(newAppts, "empty")) {
                         const body = _.join(_.map(newAppts, 'time'), '\n');
                         const message = buildPlatformMessage(GNIB_APPT_NOTIFICATIONS_TOPIC, `${category} - ${type}`, body);
                         sendFcmMessage(message);

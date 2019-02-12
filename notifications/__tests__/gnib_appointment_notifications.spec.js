@@ -72,8 +72,8 @@ describe('Check for new GNIB appointments', () => {
         expect(db.getState()).toEqual(expected);
     });
     it('should update db and send no notifications incase of fulfilled appointments in category [Other] type [New]', async() => {
-        const appts = {"Other":{"New":{"empty":"TRUE"},"Renewal":{"slots":[{"id":"7FF688B4AF591A34802582100036F712","time":"27 February 2018 - 09:00"}]}},"Study":{"New":{"empty":"TRUE"},"Renewal":{"slots":[{"id":"C46CC181B3CE60CA8025822E00370655","time":"29 March 2018 - 11:00"},{"id":"C46CC181B3CE60CA8025822E00378655","time":"29 March 2018 - 12:00"}]}},"Work":{"New":{"empty":"TRUE"},"Renewal":{"slots":[]}}}
-        const expected = {"Other":{"New":{"slots":[]},"Renewal":{"slots":[{"id":"7FF688B4AF591A34802582100036F712","time":"27 February 2018 - 09:00"}]}},"Study":{"New":{"slots":[]},"Renewal":{"slots":[{"id":"C46CC181B3CE60CA8025822E00370655","time":"29 March 2018 - 11:00"},{"id":"C46CC181B3CE60CA8025822E00378655","time":"29 March 2018 - 12:00"}]}},"Work":{"New":{"slots":[]},"Renewal":{"slots":[]}}}
+        const appts = {"Other":{"New":{"slots":["empty"]},"Renewal":{"slots":[{"id":"7FF688B4AF591A34802582100036F712","time":"27 February 2018 - 09:00"}]}},"Study":{"New":{"empty":"TRUE"},"Renewal":{"slots":[{"id":"C46CC181B3CE60CA8025822E00370655","time":"29 March 2018 - 11:00"},{"id":"C46CC181B3CE60CA8025822E00378655","time":"29 March 2018 - 12:00"}]}},"Work":{"New":{"empty":"TRUE"},"Renewal":{"slots":[]}}}
+        const expected = {"Other":{"New":{"slots":["empty"]},"Renewal":{"slots":[{"id":"7FF688B4AF591A34802582100036F712","time":"27 February 2018 - 09:00"}]}},"Study":{"New":{"slots":[]},"Renewal":{"slots":[{"id":"C46CC181B3CE60CA8025822E00370655","time":"29 March 2018 - 11:00"},{"id":"C46CC181B3CE60CA8025822E00378655","time":"29 March 2018 - 12:00"}]}},"Work":{"New":{"slots":[]},"Renewal":{"slots":[]}}}
         
         fetchGnibAppointmentAvailDts.mockReturnValue(appts);
         await checkGnibAppointments();

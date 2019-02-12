@@ -1,10 +1,19 @@
 const CronJob = require('cron').CronJob;
+const { checkGnibAppointments } = require('./gnib_appointment_notifications');
+const { axiosInterceptors } = require('./gnib');
 const { storeAppInstanceToken, deleteAppInstanceToken, subscribeAppInstanceToTopic, unsubscribeAppInstanceFromTopic } = require('./firebase');
 
 const 
     express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json());
+
+/**
+ * Scheduler for generating appointment notifications
+ */
+let notificationsGenerator = new CronJob('* 6-21 * * *', checkGnibAppointments, null, true, 'Europe/Dublin');
+console.log('Notification Job Running: ' + notificationsGenerator.running);
+
 
 app.post('/storetoken', async (req, res) => {
     if (!req.body) res.sendStatus(400);
@@ -46,4 +55,6 @@ app.post('/unsubscribe', async(req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 1338);
+app.listen(process.env.PORT || 1338, () => {
+    axiosInterceptors();
+});

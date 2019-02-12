@@ -1,4 +1,4 @@
-const serviceAccount = require('service-account.json');
+const serviceAccount = require('C:\\Harshad\\Keys\\gnib-visa-app-firebase-adminsdk-x86t3-a1290dc8cc.json');
 const admin = require('firebase-admin');
 
 /* initialise app */
@@ -16,11 +16,9 @@ const messaging = admin.messaging();
 
 function buildCommonMessage(title, body) {
     return {
-        'message': {
-            'notification': {
-                'title': title,
-                'body': body
-            }
+        'notification': {
+            'title': title,
+            'body': body
         }
     };
 }
@@ -40,8 +38,8 @@ function buildPlatformMessage(topic, title, body) {
         }
     };
 
-    fcmMessage['message']['topic'] = topic;
-    fcmMessage['message']['webpush'] = webpush;
+    fcmMessage['topic'] = topic;
+    fcmMessage['webpush'] = webpush;
     return fcmMessage;
 }
 
@@ -87,7 +85,7 @@ async function unsubscribeAppInstanceFromTopic(token, topic) {
 }
 
 async function sendFcmMessage(fcmMessage) {
-    try {
+    try {    
         await messaging.send(fcmMessage);
     } catch(err) {
         console.log(err);
