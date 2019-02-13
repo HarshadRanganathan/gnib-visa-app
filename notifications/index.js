@@ -69,9 +69,9 @@ app.post('/pushevent', async(req, res) => {
     if (req.headers['x-hub-signature'] == sig) {
         if(pushEvent.ref === 'refs/head/master') {
             console.log('Master branch has new commits to be pulled');
-            spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' }).on('error', (console.error()));
-            spawn('npm', ['install'], { stdio: 'inherit' }).on('error', (error) => { console.log(error) });
-            spawn('pm2', ['restart', pm2AppName], { stdio: 'inherit' }).on('error', (console.error()));
+            spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' }).on('error', (error) => { console.log(error); });
+            spawn('npm', ['install'], { stdio: 'inherit' }).on('error', (error) => { console.log(error); });
+            spawn('pm2', ['restart', pm2AppName], { stdio: 'inherit' }).on('error', (error) => { console.log(error); });
         }
     } else {
         console.log('Signatures didn\'t match!');
