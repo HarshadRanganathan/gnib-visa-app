@@ -2,6 +2,8 @@
 
 Cron service that checks for new appointments and notifies FCM topic.
 
+This package utilizes:
+
 - [Node JS](https://nodejs.org/en/)
     - [axios](https://www.npmjs.com/package/axios) for promise based http requests
 - [Express](https://www.npmjs.com/package/express) minimalist web framework
