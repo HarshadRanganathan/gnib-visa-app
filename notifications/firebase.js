@@ -1,4 +1,4 @@
-const serviceAccount = require('C:\\Harshad\\Keys\\gnib-visa-app-firebase-adminsdk-x86t3-a1290dc8cc.json');
+const serviceAccount = require('service-account.json');
 const admin = require('firebase-admin');
 
 /* initialise app */
