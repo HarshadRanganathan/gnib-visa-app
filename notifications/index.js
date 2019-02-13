@@ -1,6 +1,7 @@
+require('dotenv').config();
+const spawn = require('child_process').spawn;
 const CronJob = require('cron').CronJob;
 const crypto = require('crypto');
-const spawn = require('child_process').spawn;
 const { checkGnibAppointments } = require('./gnib_appointment_notifications');
 const { axiosInterceptors } = require('./gnib');
 const { storeAppInstanceToken, deleteAppInstanceToken, subscribeAppInstanceToTopic, unsubscribeAppInstanceFromTopic } = require('./firebase');
@@ -63,14 +64,14 @@ app.post('/unsubscribe', async(req, res) => {
  * Github webhook
  */
 app.post('/pushevent', async(req, res) => {
-    const pushEvent = res.body;
-    const sig = "sha1=" + crypto.createHmac('sha1', secret).update(res.body.toString()).digest('hex');
+    const pushEvent = req.body;    
+    const sig = "sha1=" + crypto.createHmac('sha1', process.env.GITHUB_WEBHOOK_SECRET).update(pushEvent.toString()).digest('hex');
     if (req.headers['x-hub-signature'] == sig) {
         if(pushEvent.ref === 'refs/head/master') {
             console.log('Master branch has new commits to be pulled');
-            spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' });
-            spawn('npm', ['install'], { stdio: 'inherit' });
-            spawn('pm2', ['restart', pm2AppName], { stdio: 'inherit' });
+            spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' }).on('error', (console.error()));
+            spawn('npm', ['install'], { stdio: 'inherit' }).on('error', (error) => { console.log(error) });
+            spawn('pm2', ['restart', pm2AppName], { stdio: 'inherit' }).on('error', (console.error()));
         }
     } else {
         console.log('Signatures didn\'t match!');
