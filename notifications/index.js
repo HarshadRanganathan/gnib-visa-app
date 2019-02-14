@@ -11,7 +11,7 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json());
 
-const pm2AppName = 'gnib-visa-app-notifications';
+const pm2AppName = process.env.PM2_APP_NAME;
 
 /**
  * Scheduler for generating appointment notifications
@@ -67,7 +67,7 @@ app.post('/pushevent', async(req, res) => {
     const pushEvent = req.body;    
     const sig = "sha1=" + crypto.createHmac('sha1', process.env.GITHUB_WEBHOOK_SECRET).update(JSON.stringify(pushEvent)).digest('hex');
     if (req.headers['x-hub-signature'] == sig) {
-        if(pushEvent.ref === 'refs/head/master') {
+        if(pushEvent.ref === 'refs/heads/master') {
             console.log('Master branch has new commits to be pulled');
             spawn('git', ['pull', 'origin', 'master'], { stdio: 'inherit' }).on('error', (error) => { console.log(error); });
             spawn('npm', ['install'], { stdio: 'inherit' }).on('error', (error) => { console.log(error); });

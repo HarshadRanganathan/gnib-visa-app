@@ -138,6 +138,7 @@ class GNIBAppointments extends Component {
                     <CardContent>
                         <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
                         <Typography className={classes.titlePos}>Last Updated: {this.props.lastUpdate.time}</Typography>
+                        <Typography className={classes.titlePos}>New category 'All' has been introduced to simplify the appointment booking process. For a number of weeks the three other categories will continue to appear.</Typography>
                         <Default>
                             <Table className={classes.table}>
                                 <TableHead>

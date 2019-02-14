@@ -13,6 +13,7 @@ const ROOT_URL = `https://burghquayregistrationoffice.inis.gov.ie/${ST_PATH}`;
 const HEADER_REFERER_URL = 'https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm'
 
 const CATEGORIES = [
+    { category: 'All' },
     { category: 'Work' }, 
     { category: 'Study' },
     { category: 'Other' }
