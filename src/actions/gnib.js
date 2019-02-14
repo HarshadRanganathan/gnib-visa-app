@@ -9,6 +9,7 @@ export const GNIB_APPOINTMENT_DATES = 'GNIB_APPOINTMENT_DATES';
 export const GNIB_API_ERROR = 'GNIB_API_ERROR';
 export const PAGE_KEY = 'PAGE_KEY';
 export const CATEGORIES = [
+    { category: 'All' },
     { category: 'Work' }, 
     { category: 'Study' },
     { category: 'Other' }

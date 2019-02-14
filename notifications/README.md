@@ -10,6 +10,7 @@ This package utilizes:
 - [LowDB](https://github.com/typicode/lowdb) local JSON database
 - [Jest](https://jestjs.io/) javascript testing
 - [Firebase](https://www.npmjs.com/package/firebase-admin) access firebase services 
+- [PM2](https://www.npmjs.com/package/pm2s) production process manager for Node.js applications with a built-in load balancer
 
 ## Running the App locally
 You'll need Node & NPM installed on your local development machine.
@@ -19,6 +20,7 @@ This app requires a local configuration file (.env) in the root directory with t
 
 ```
 GITHUB_WEBHOOK_SECRET=<github_webhook_secret>
+PM2_APP_NAME=<pm2_app_name>
 ```
 
 #### `npm run start`
