@@ -17,6 +17,17 @@ This App utilizes:
 ## Running the App locally
 You'll need Node & NPM installed on your local development machine.
 
+Install the project dependencies by running below commands.
+
+```
+# install react project dependencies
+npm install
+
+# install notification project dependencies
+cd notifications/
+npm install
+```
+
 ### Development mode
 
 #### `npm run dev`
