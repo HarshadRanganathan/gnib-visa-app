@@ -89,19 +89,7 @@ class VisaAppointments extends Component {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography component="p" className={classes.noteTextPos}>
-                        The On-Line Appointments service for customers seeking Re-entry Visas from Re-entry Division, Irish Naturalisation and Immigration Service has ceased from the Monday, 3 September, 2018 with the exception of emergency re-entry visa on-line appointments.
-                    </Typography>
-                    <Typography component="p" className={classes.noteTextPos}>
-                        All applications for re-entry visas has to be sent through the registered post postal system. Customers are advised to submit their postal applications 5 to 6 weeks prior to travel.
-                    </Typography>
-                    <Typography component="p" className={classes.noteTextPos}>
-                        Visit <a href={RE_ENTRY_VISA_DOC_URL} target="_blank">Apply for a re-entry visa</a> for more details on the documentation to be sent via post based on your stamp.<br/>
-                    </Typography>
-                    <Typography component="p" className={classes.noteTextPos}>
-                        Emergency appointment slots to be checked at <a href={RE_ENTRY_VISA_APPT_URL} target="_blank">reentryvisa.inis.gov.ie</a>
-                    </Typography>
-                    <Typography component="p" className={classes.noteTextPos}>
-                        The stamp in your passport is your evidence of your immigration status in the State. This stamp is sufficient for applying for a Re-Entry visa and, if appropriate, for taking up employment.
+                    The Minister for Justice and Equality, Charlie Flanagan TD, has today (12/04/2019) announced the abolition of Ireland’s re-entry visa system with effect from 13 May 2019. Under this system, visa required nationals who live in Ireland, and who wish to travel to and from the country, have been obliged to apply for a re-entry visa in advance of travel. From 13 May, such individuals will be exempt from the requirement to hold a visa if they have registered for an Irish Residence Permit (IRP) or GNIB card.
                     </Typography>
                 </CardContent>
             </Card>

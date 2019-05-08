@@ -170,19 +170,6 @@ const Faq = ({ classes }) => {
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                I recently applied for a stamp change. Should I renew my re entry visa ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                Re-entry visa is valid till it's own expiry regardless of stamp change.
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
                 </CardContent>
             </Card>
             <Card className={classes.card}>
@@ -191,54 +178,13 @@ const Faq = ({ classes }) => {
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
                             <Typography variant="subtitle1">
-                                I haven't got my IRP card by post. Can I apply for a re-entry visa ?
+                                Do I need a re-entry visa ?
                             </Typography>
                             <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
-                                Yes, the registration stamp in your passport is evidence of your immigration status in the State. This stamp is sufficient for applying for a Re Entry visa and, if appropriate, for taking up employment.
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                I'm waiting for my IRP card and have a valid re-entry visa. Can I travel to another country and return to Ireland before my visa expiry ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                Yes, the registration stamp in your passport is evidence of your immigration status in the State. You can show the stamp to the immigration officer and mention that you are waiting for your IRP card.
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                How soon will I receive a decision ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                It can take up to 15 - 20 working days to process a re-entry visa application submitted by post.<br /><br />
-                                To estimate when your visa (if approved) will be ready, you should also include extra time for weekends, public holidays and postal transit.<br /><br />
-                                Processing times also vary based on the number of applications we receive. In general, we are busiest before Christmas and during the summer.
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                How are the documents and visa returned back to me ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                Documents and visas (if approved) are now being returned to applicants by registered post. You can track the same via <a href="https://track.anpost.ie/">Anpost</a>
+                            The Minister for Justice and Equality, Charlie Flanagan TD, has today (12/04/2019) announced the abolition of Ireland’s re-entry visa system with effect from 13 May 2019. Under this system, visa required nationals who live in Ireland, and who wish to travel to and from the country, have been obliged to apply for a re-entry visa in advance of travel. From 13 May, such individuals will be exempt from the requirement to hold a visa if they have registered for an Irish Residence Permit (IRP) or GNIB card.
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -252,35 +198,6 @@ const Faq = ({ classes }) => {
                         <ExpansionPanelDetails>
                             <Typography>
                                 If your Irish visa has <a href="https://www.dfa.ie/media/embassychina/visas/BIVS-information-note-EN.pdf">BIVS stamp</a>, then you can travel to UK without the need for a separate tourist visa.
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                Can I send documents for my family together ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                If you are making applications for more than 1 person (eg a family), submit them together. To do so:<br/><br/>
-                                1. Place each person's application documents into separate ordinary envelopes<br/><br/>
-                                2. Write the name of each applicant on each envelope<br/><br/>
-                                3. Then place each envelope into a larger (padded) envelope<br/><br/>
-                            </Typography>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <Typography variant="subtitle1">
-                                Can I get multi entry visa during my emergency appointment ?
-                            </Typography>
-                            <i class="material-icons">arrow_drop_down</i>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>
-                                In some circumstances you can by paying 200 EUR.
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
