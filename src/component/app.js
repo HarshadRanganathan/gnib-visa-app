@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Donate from '../component/donate';
 import Nav from '../containers/nav';
 import Disqus from '../component/disqus';
 import Footer from '../component/footer';
@@ -27,7 +28,6 @@ const App = ({classes}) => {
                         <Toolbar>
                             <Typography variant="h6" color="inherit" className={classes.grow}>GNIB (IRP) &amp; Re-Entry Visa Appointments</Typography>
                             <Button color="inherit" href="https://m.me/dbei-bot" target="_blank">Stamp 4 Messenger Notification</Button>
-                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
                         </Toolbar>
                     </AppBar>
                 </Default>
@@ -35,10 +35,10 @@ const App = ({classes}) => {
                     <AppBar position="static">
                         <Toolbar>
                             <Typography color="inherit" className={classes.grow}>GN...Appointments</Typography>
-                            <Button color="inherit" href="https://www.paypal.me/harshadranganathan" target="_blank">Donate</Button>
                         </Toolbar>
                     </AppBar>
                 </Mobile>
+                <Donate />
                 <Nav />
                 <Disqus />
                 <Footer />
