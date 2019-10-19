@@ -89,7 +89,7 @@ class VisaAppointments extends Component {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography component="p" className={classes.noteTextPos}>
-                    The Minister for Justice and Equality, Charlie Flanagan TD, has today (12/04/2019) announced the abolition of Ireland’s re-entry visa system with effect from 13 May 2019. Under this system, visa required nationals who live in Ireland, and who wish to travel to and from the country, have been obliged to apply for a re-entry visa in advance of travel. From 13 May, such individuals will be exempt from the requirement to hold a visa if they have registered for an Irish Residence Permit (IRP) or GNIB card.
+                    Ireland no longer issues re-entry visas to non-EEA nationals living in Ireland. They can now leave and re-enter Ireland on their Immigration Residence Permission card (IRP). If you are applying for a long stay visa to work, study or join family members in Ireland and you need to return home or leave Ireland for another reason within 4 months of your arrival in Ireland, you can now apply for a 4 month multiple entry visa which will facilitate your travel arrangements until you have registered for your IRP card. 
                     </Typography>
                 </CardContent>
             </Card>
