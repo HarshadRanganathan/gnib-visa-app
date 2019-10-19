@@ -48,3 +48,9 @@ It bundles React in production mode, minifies the files and the filenames includ
 Runs the app in express server. 
 
 Open http://localhost:8080 (defaults to port 8080) to view it in the browser.
+
+Alternatively, to run the app in nginx server with reverse proxy configuration, set up docker  and run docker compose which will copy the static files and nginx conf to the nginx image and serve the app at http://localhost:8080.
+
+```
+docker-compose up --build
+```
