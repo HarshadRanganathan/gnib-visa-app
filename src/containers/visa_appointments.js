@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles, Card, CardContent, Typography, Table, TableHead, TableBody, TableRow, TableCell, LinearProgress } from '@material-ui/core';
 import { fetchVisaCurrentProcessingTimes } from '../actions/visa';
 import { CURRENT_PROCESSING_TIMES } from '../reducers/reducer_visa';
+import Ads from './ads';
 
 const CPT_TITLE = 'Current Processing Times';
 const RE_ENTRY_VISA_DOC_URL = 'http://www.inis.gov.ie/en/INIS/Pages/visas-reentry-apply';
@@ -101,6 +102,7 @@ class VisaAppointments extends Component {
         return (
             <Fragment>
                 {this.renderCurrentProcessingTimes(classes, visa)}
+                <Ads />
                 {this.renderNotes(classes)}
             </Fragment>
         );   
