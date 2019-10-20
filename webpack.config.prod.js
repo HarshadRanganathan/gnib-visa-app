@@ -101,7 +101,10 @@ module.exports = () => {
         threshold: 10240,
         minRatio: 0.8
       }),
-      new CopyPlugin([{ from: path.join(srcPath, "pwa"), to: buildPath }])
+      new CopyPlugin([
+        { from: path.join(srcPath, "pwa"), to: buildPath },
+        { from: path.join(__dirname, "ads.txt"), to: buildPath }
+      ])
     ]
   };
 };

@@ -38,8 +38,8 @@ const App = ({classes}) => {
                         </Toolbar>
                     </AppBar>
                 </Mobile>
-                <Donate />
                 <Nav />
+                <Donate />
                 <Disqus />
                 <Footer />
             </div>

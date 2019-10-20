@@ -5,7 +5,7 @@ import { withStyles, Typography } from '@material-ui/core';
 const styles = theme => ({
     root: {
         display: 'flex',
-	    alignItems: 'center', 
+	      alignItems: 'center', 
         justifyContent: 'center',
         padding: 20
     },

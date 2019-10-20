@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles } from '@material-ui/core';
+import Ads from '../containers/ads';
 
 const styles = theme => ({
     card: {
@@ -205,6 +206,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                 </CardContent>
             </Card>
+            <Ads />
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h6" component="h2" className={classes.titlePos}>Re-Entry Visa</Typography>
@@ -236,6 +238,7 @@ const Faq = ({ classes }) => {
                     </ExpansionPanel>
                 </CardContent>
             </Card>
+            <Ads />
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h6" component="h2" className={classes.titlePos}>Transit Visa</Typography>

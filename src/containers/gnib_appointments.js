@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles, Card, CardContent, Typography, LinearProgress, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import Responsive from 'react-responsive';
 import { PAGE_KEY, getPageKey, fetchGnibAppointmentAvailDts } from '../actions/gnib';
+import Ads from './ads';
 
 const APPT_TITLE = "Available Appointments";
 const Mobile = props => <Responsive {...props} maxWidth={767} />;
@@ -220,6 +221,7 @@ class GNIBAppointments extends Component {
         return (
             <Fragment>
                 {this.renderAppointments(classes, gnib)}
+                <Ads />
                 {this.renderNotes(classes)}
             </Fragment>
         );
