@@ -23,7 +23,7 @@ const Faq = ({ classes }) => {
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
                             <Typography variant="subtitle1">
-                                My GNIB is expiring soon but I have got an appointment only for a later date. Will that constitute an illegal stay ?
+                                My GNIB/IRP is expiring soon but I have got an appointment only for a later date. Will that constitute an illegal stay ?
                             </Typography>
                             <i class="material-icons">arrow_drop_down</i>
                         </ExpansionPanelSummary>
@@ -101,6 +101,19 @@ const Faq = ({ classes }) => {
                     <ExpansionPanel>
                         <ExpansionPanelSummary>
                             <Typography variant="subtitle1">
+                                I have registered for my IRP but haven't received my card yet. Can I travel in and out of Ireland before I receive IRP card  ?
+                            </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Typography>
+                            The Irish Residence Permit is issued to non-EEA nationals who have a permission to reside in the State for more than 90 days. It can take some weeks to get a registration appointment, and up to 2 weeks for an IRP card to be produced following registration. Visa required nationals who intend to travel in and out of Ireland during the first four months of their planned stay should apply for a multiple entry visa, which will allow them to travel into Ireland multiple times in a given period, before their IRP card is issued.
+                            </Typography>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary>
+                            <Typography variant="subtitle1">
                                 I haven't received my IRP card by post even after 10 working days. What should I do ?
                             </Typography>
                             <i class="material-icons">arrow_drop_down</i>
@@ -165,8 +178,28 @@ const Faq = ({ classes }) => {
                             <Typography>
                                 As received from <a href="mailto:burghquayregoffice@justice.ie">burghquayregoffice@justice.ie</a>, please note that the ensuing gap between the expiration of the current permission and the booked appointment should not create a period of illegal status in the State.<br /><br />
                                 So, you can try to book an appointment for a later date post your registration expiry. However, it will be considered an immigration gap which you need to deduct in case you are applying for your naturalisation in the future.<br /><br />
-                                You can also try to book an appointment in any category (Work/Other) as it won't be checked.<br /><br />
                                 Other option is to approach counter 1 and state your case. But recently, they are very strict and are not providing any direct appointments at the counter.
+                            </Typography>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary>
+                            <Typography variant="subtitle1">
+                                I want to update my address in IRP. What is the procedure  ?
+                            </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Typography>
+                            If your new address is outside Dublin, send an email to <a href="mailto:gnib_dv@garda.ie">gnib_dv@garda.ie</a><br /><br />
+                            If your new address is within Dublin, send an email to <a href="mailto:burghquayregoffice@justice.ie">burghquayregoffice@justice.ie</a><br /><br />
+
+                            Subject Line - Change of details <br /><br />
+
+                            In the email, specify your Full name, Registration number, Nationality, Date of birth & your new address. <br /><br />
+
+                            You will get an acknowledgement in 2-3 days.
+
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -184,7 +217,7 @@ const Faq = ({ classes }) => {
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Typography>
-                            The Minister for Justice and Equality, Charlie Flanagan TD, has today (12/04/2019) announced the abolition of Ireland’s re-entry visa system with effect from 13 May 2019. Under this system, visa required nationals who live in Ireland, and who wish to travel to and from the country, have been obliged to apply for a re-entry visa in advance of travel. From 13 May, such individuals will be exempt from the requirement to hold a visa if they have registered for an Irish Residence Permit (IRP) or GNIB card.
+                            Ireland no longer issues re-entry visas to non-EEA nationals living in Ireland. They can now leave and re-enter Ireland on their Immigration Residence Permission card (IRP). If you are applying for a long stay visa to work, study or join family members in Ireland and you need to return home or leave Ireland for another reason within 4 months of your arrival in Ireland, you can now apply for a 4 month multiple entry visa which will facilitate your travel arrangements until you have registered for your IRP card. 
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
@@ -198,6 +231,30 @@ const Faq = ({ classes }) => {
                         <ExpansionPanelDetails>
                             <Typography>
                                 If your Irish visa has <a href="https://www.dfa.ie/media/embassychina/visas/BIVS-information-note-EN.pdf">BIVS stamp</a>, then you can travel to UK without the need for a separate tourist visa.
+                            </Typography>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                </CardContent>
+            </Card>
+            <Card className={classes.card}>
+                <CardContent>
+                    <Typography variant="h6" component="h2" className={classes.titlePos}>Transit Visa</Typography>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary>
+                            <Typography variant="subtitle1">
+                                Do I need a transit visa if I am travelling to India via Heathrow airport ?
+                            </Typography>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Typography>
+                            You are exempt from transit visa if you: <br />
+                            1. don't pass through border control i.e. only changing terminals within the same airport <br /> <br />
+                            and have one of the following: <br /> 
+                            1. BIVS visa (or) <br />
+                            2. Category D visa (or) <br />
+                            3. Residence permit <br /> <br />
+                            <a href="https://www.gov.uk/check-uk-visa/y/india/transit">Check if you need a UK transit visa</a>
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
