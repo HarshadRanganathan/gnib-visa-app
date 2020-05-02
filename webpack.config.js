@@ -6,6 +6,7 @@ const buildPath = path.join(__dirname, "public");
 
 module.exports = () => {
   return {
+    mode:'development',
     entry: ["@babel/polyfill", path.join(srcPath, "index.js")],
     output: {
       path: buildPath,
@@ -35,10 +36,7 @@ module.exports = () => {
         excludeChunks: ["base"],
         filename: "index.html",
         minify: {
-          collapseWhitespace: true,
           collapseInlineTagWhitespace: true,
-          removeComments: true,
-          removeRedundantAttributes: true
         }
       }),
       new CopyPlugin([{ from: path.join(srcPath, "pwa"), to: buildPath }])
