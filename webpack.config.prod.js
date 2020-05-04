@@ -38,9 +38,7 @@ module.exports = () => {
               },
             },
             
-            'css-loader',
-            'postcss-loader',
-            'sass-loader',
+            'css-loader'
           ]
         }
       ]
@@ -48,7 +46,6 @@ module.exports = () => {
     optimization:{
       minimizer: [
         new UglifyJsPlugin({
-          exclude: /\/node_module/,
           parallel: true,
           uglifyOptions: {
             ie8: true,
@@ -57,7 +54,7 @@ module.exports = () => {
       })],
       splitChunks:{
         minChunks: 1,
-        chunks: 'all'
+        chunks: 'async'
       }
     },
     plugins: [
@@ -66,7 +63,7 @@ module.exports = () => {
         template: path.join(__dirname, "index.ejs"),
         path: buildPath,
         excludeChunks: ["base"],
-        filename: "index.[contenthash].html",
+        filename: "index.[hash].html",
         minify: {
           collapseInlineTagWhitespace: true,
         }
@@ -94,6 +91,7 @@ module.exports = () => {
         minify: true
       }),
       new CompressionPlugin({
+        filename: '[path].gz[query]',
         test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
         threshold: 10240,
       }),
@@ -101,6 +99,9 @@ module.exports = () => {
         { from: path.join(srcPath, "pwa"), to: buildPath },
         { from: path.join(__dirname, "ads.txt"), to: buildPath }
       ])
-    ]
+    ],
+    performance: {
+      hints: false
+    }
   };
 };
