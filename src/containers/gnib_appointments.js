@@ -56,6 +56,9 @@ const styles = theme => ({
     },
     center: {
         textAlign: 'center'
+    },
+    justify: {
+        textAlign: 'justify'
     }
 });
 
@@ -122,7 +125,10 @@ class GNIBAppointments extends Component {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-                    <Typography className={classes.center + ' ' + classes.textError}>Due to COVID-19 the online appointment system has been suspended until further notice. <br/>Further information and updates can be found at <a href="http://www.inis.gov.ie/en/INIS/Pages/COVID-19-updates-and-announcements" target="_blank">COVID-19-updates-and-announcements</a></Typography>
+                    <Typography className={classes.justify + ' ' + classes.textError}>
+                    A new online Registration Renewal system for all non-nationals based in Dublin will go live on 20th July.  <br/><br/> This will mean anyone looking to renew their registration will no longer have to book an appointment and attend the registration office in person.<br/><br/> 
+
+                    Applicants seeking to renew their permission will now complete the application form online <a href="https://inisonline.jahs.ie" target="_blank">https://inisonline.jahs.ie</a>, upload copies of supporting documents online, pay the applicable fee and then submit their passport and current IRP card via registered post. <br/><br/> Documents will be checked and, if approved, the passport will be stamped and returned by registered post and an IRP card issued by express post.</Typography>
                 </CardContent>
             </Card>
         )
