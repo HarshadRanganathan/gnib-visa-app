@@ -4,7 +4,7 @@ import reducer from '../reducer_visa';
 import { VISA_CURRENT_PROCESSING_TIMES, VISA_ERROR } from '../../actions/visa';
 
 const initialState = {};
-const finalState = {"CurrentProcessingTimes":{"Re-Entry":"23 November 2018"}};
+const finalState = {"CurrentProcessingTimes":{"Re-Entry":"14 September 2020"}};
 
 describe('VISA Reducer', () => {
     let payload = {};

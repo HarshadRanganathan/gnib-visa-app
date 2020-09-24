@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { emitRequestsProgress } from './progress';
 
-const CPT_PATH = 'en/INIS/Pages/Current_Processing_Times'
+const CPT_PATH = 'en/INIS/Pages/Visa%20Decisions'
 const ROOT_URL = `/inis-proxy/${CPT_PATH}`;
 
 export const VISA_CURRENT_PROCESSING_TIMES = 'VISA_CURRENT_PROCESSING_TIMES';

@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 import { VISA_CURRENT_PROCESSING_TIMES, VISA_ERROR } from '../actions/visa';
 
-const RE_ENTRY_VISA_SELECTOR = 'tr:contains("Re-entry") td.visa-decision:nth-of-type(2)';
+const RE_ENTRY_VISA_SELECTOR = 'tr:contains("Re-entry (children)") td:nth-child(2)';
 
 export const CURRENT_PROCESSING_TIMES = 'CurrentProcessingTimes';
 export const RE_ENTRY = 'Re-Entry';
