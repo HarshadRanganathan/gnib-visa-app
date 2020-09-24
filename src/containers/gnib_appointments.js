@@ -63,20 +63,20 @@ const styles = theme => ({
 });
 
 class GNIBAppointments extends Component {
-    // async componentDidMount() {
-    //     try {
-    //         const pageKey = await getPageKey();
-    //         sessionStorage.setItem(PAGE_KEY, pageKey);
-    //     } catch(err) {
-    //         console.log(err);
-    //     }
-    //     this.props.fetchGnibAppointmentAvailDts();
-    //     this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 60000);
-    // }
+    async componentDidMount() {
+        try {
+            const pageKey = await getPageKey();
+            sessionStorage.setItem(PAGE_KEY, pageKey);
+        } catch(err) {
+            console.log(err);
+        }
+        this.props.fetchGnibAppointmentAvailDts();
+        this.interval = setInterval(this.props.fetchGnibAppointmentAvailDts, 60000);
+    }
 
-    // componentWillUnmount() {
-    //     clearInterval(this.interval);
-    // }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
     renderSlots(classes, { slots }) {
         if(!_.isEmpty(slots) && !_.includes(slots, "empty")) {
@@ -121,91 +121,76 @@ class GNIBAppointments extends Component {
     }
 
     renderAppointments(classes, gnib) { 
-        return (
-            <Card className={classes.card}>
-                <CardContent>
-                    <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-                    <Typography className={classes.justify + ' ' + classes.textError}>
-                    A new online Registration Renewal system for all non-nationals based in Dublin will go live on 20th July.  <br/><br/> This will mean anyone looking to renew their registration will no longer have to book an appointment and attend the registration office in person.<br/><br/> 
-
-                    Applicants seeking to renew their permission will now complete the application form online <a href="https://inisonline.jahs.ie" target="_blank">https://inisonline.jahs.ie</a>, upload copies of supporting documents online, pay the applicable fee and then submit their passport and current IRP card via registered post. <br/><br/> Documents will be checked and, if approved, the passport will be stamped and returned by registered post and an IRP card issued by express post.</Typography>
-                </CardContent>
-            </Card>
-        )
-        // if(_.isEmpty(gnib)) {
-        //     return (
-        //         <Card className={classes.card}>
-        //             <CardContent>
-        //                 <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-        //                 <LinearProgress variant="determinate" value={this.props.progress.percent/100} />
-        //             </CardContent>
-        //         </Card>
-        //     );
-        // } else if(gnib.error) {
-        //     return (
-        //         <Card className={classes.card}>
-        //             <CardContent>
-        //                 <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-        //                 <Typography className={classes.textError} align="center">{gnib.error}</Typography>
-        //             </CardContent>
-        //         </Card>
-        //     );
-        // } else {
-        //     return (
-        //         <Card className={classes.card}>
-        //             <CardContent>
-        //                 <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
-        //                 <Typography className={classes.titlePos}>Last Updated: {this.props.lastUpdate.time}</Typography>
-        //                 <Default>
-        //                     <Table className={classes.table}>
-        //                         <TableHead>
-        //                             <TableRow>
-        //                                 <TableCell>Category</TableCell>
-        //                                 <TableCell>New</TableCell>
-        //                                 <TableCell>Renewal</TableCell>
-        //                             </TableRow>
-        //                         </TableHead>
-        //                         <TableBody>
-        //                             {
-        //                                 Object.keys(gnib).map(cat => {
-        //                                     return (
-        //                                         <TableRow key={cat}>
-        //                                             <TableCell component="th" scope="row">{cat}</TableCell>
-        //                                             {this.renderSlots(classes, gnib[cat]['New'])}
-        //                                             {this.renderSlots(classes, gnib[cat]['Renewal'])}
-        //                                         </TableRow>
-        //                                     );
-        //                                 })
-        //                             }
-        //                         </TableBody>
-        //                     </Table>
-        //                 </Default>
-        //                 <Mobile>
-        //                     <Table className={classes.table}>
-        //                         <TableHead>
-        //                             <TableRow>
-        //                                 <TableCell>New</TableCell>
-        //                                 <TableCell>Renewal</TableCell>
-        //                             </TableRow>
-        //                         </TableHead>
-        //                         <TableBody>
-        //                             {
-        //                                 Object.keys(gnib).map(cat => {
-        //                                     return (
-        //                                         <TableRow key={cat}>
-        //                                             {this.renderMobileSlots(classes, cat, gnib[cat]['New'])}
-        //                                             {this.renderMobileSlots(classes, cat, gnib[cat]['Renewal'])}
-        //                                         </TableRow>
-        //                                     );
-        //                                 })
-        //                             }
-        //                         </TableBody>
-        //                     </Table>
-        //                 </Mobile>
-        //             </CardContent>
-        //         </Card>
-        //     );
-        // }
+        if(_.isEmpty(gnib)) {
+            return (
+                <Card className={classes.card}>
+                    <CardContent>
+                        <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
+                        <LinearProgress variant="determinate" value={this.props.progress.percent/100} />
+                    </CardContent>
+                </Card>
+            );
+        } else if(gnib.error) {
+            return (
+                <Card className={classes.card}>
+                    <CardContent>
+                        <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
+                        <Typography className={classes.textError} align="center">{gnib.error}</Typography>
+                    </CardContent>
+                </Card>
+            );
+        } else {
+            return (
+                <Card className={classes.card}>
+                    <CardContent>
+                        <Typography variant="h6" component="h2" className={classes.titlePos}>{APPT_TITLE}</Typography>
+                        <Typography className={classes.titlePos}>Last Updated: {this.props.lastUpdate.time}</Typography>
+                        <Default>
+                            <Table className={classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Category</TableCell>
+                                        <TableCell>New</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        Object.keys(gnib).map(cat => {
+                                            return (
+                                                <TableRow key={cat}>
+                                                    <TableCell component="th" scope="row">{cat}</TableCell>
+                                                    {this.renderSlots(classes, gnib[cat]['New'])}
+                                                </TableRow>
+                                            );
+                                        })
+                                    }
+                                </TableBody>
+                            </Table>
+                        </Default>
+                        <Mobile>
+                            <Table className={classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>New</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        Object.keys(gnib).map(cat => {
+                                            return (
+                                                <TableRow key={cat}>
+                                                    {this.renderMobileSlots(classes, cat, gnib[cat]['New'])}
+                                                </TableRow>
+                                            );
+                                        })
+                                    }
+                                </TableBody>
+                            </Table>
+                        </Mobile>
+                    </CardContent>
+                </Card>
+            );
+        }
     }
 
     renderNotes(classes) {
