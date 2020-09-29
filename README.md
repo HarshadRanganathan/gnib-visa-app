@@ -3,8 +3,6 @@
 # gnib-visa-app
 Find appointment slots for GNIB (Irish Residence Permit) without hassle.
 
-App is hosted at https://gnib-visa-app.rharshad.com/
-
 This App utilizes:
 - [React](https://reactjs.org/)
     - [axios](https://www.npmjs.com/package/axios) for promise based http requests
