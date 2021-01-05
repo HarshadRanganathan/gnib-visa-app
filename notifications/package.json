@@ -27,7 +27,7 @@
   "license": "GPL-3.0",
   "homepage": "https://github.com/HarshadRanganathan/gnib-visa-app.git#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.2",
     "cron": "^1.6.0",
     "crypto": "^1.0.1",
