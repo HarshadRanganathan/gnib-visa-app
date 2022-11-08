@@ -46,7 +46,7 @@
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^3.0.2",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^5.5.0",
     "http-proxy-middleware": "^0.19.1",
     "jest": "^24.8.0",
     "nodemon": "^1.18.9",
